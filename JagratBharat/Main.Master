@@ -1,0 +1,345 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="JagratBharat.Main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Jagrat Bharat News</title>
+    <%-- Custom Style Sheet --%>
+   
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <%-- Font awesome CSS --%>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <meta name="theme-color" content="#0c084c">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+        body, html {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f4f6;
+        }
+
+        .navigationBar {
+            position: fixed;
+            top: 0;
+            z-index: 1;
+            background-color: #0c084c;
+            width: 100%;
+            text-align: center;
+            display: inline-flex;
+            margin: 0px;
+            box-shadow: 0px 5px 20px black;
+        }
+
+            .navigationBar > h3 {
+                padding: 10px;
+                margin: 0px auto 0px auto;
+                font-size: 30px;
+                color: rgba(255, 255, 255, .8);
+                cursor: pointer;
+            }
+
+        @keyframes glowIn {
+            0% {
+                color: rgba(255,255,255,.8);
+                text-shadow: 0px 0px 0px rgb(255, 255, 255);
+            }
+
+            100% {
+                color: rgba(255,255,255,1);
+                text-shadow: 0px 0px 25px rgb(255, 255, 255);
+            }
+        }
+
+        @keyframes glowOut {
+            0% {
+                color: rgba(255,255,255,1);
+                text-shadow: 0px 0px 25px rgb(255, 255, 255);
+            }
+
+            100% {
+                color: rgba(255,255,255,.8);
+                text-shadow: 0px 0px 0px rgb(255, 255, 255);
+            }
+        }
+
+        .navigationBar > h3:hover {
+            animation: glowIn 1s forwards;
+        }
+
+        .navigationBar > h3:not(:hover) {
+            animation: glowOut 1s forwards;
+        }
+
+        .menu, .close {
+            padding: 10px;
+            font-size: 30px;
+            color: rgba(255, 255, 255, .8);
+        }
+
+        .close {
+            padding: 10px;
+            font-size: 30px;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+            .menu:hover, .close:hover {
+                animation: glowIn 1s forwards;
+                cursor: pointer;
+            }
+
+            .menu:not(:hover), .close:not(:hover) {
+                animation: glowOut 1s forwards;
+            }
+
+        .fadeIn {
+            animation-name: fadeIn;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+        }
+
+        .fadeOut {
+            animation-name: fadeOut;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                left: -300px;
+            }
+
+            to {
+                left: 0;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                left: 0;
+            }
+
+            to {
+                left: -300px;
+            }
+        }
+
+        .search {
+            margin: auto;
+            padding: 8px;
+            vertical-align: baseline;
+            background: #ffffff;
+            border-radius: 3px;
+            display: inline;
+        }
+
+        .share {
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            padding: 15px;
+            display: inline;
+            text-align: center;
+            font-size: 24px;
+        }
+
+            .share > i {
+                padding: 24px;
+                color: #ffffff;
+                cursor: pointer;
+            }
+
+        .search > input {
+            height: 30px;
+            font-size: 18px;
+            text-indent: 10px;
+            color: rgba(0, 0, 0, .8);
+            border: none;
+            border-radius: 10px;
+        }
+
+        .search > span {
+            height: 100%;
+        }
+
+            .search > span > i {
+                width: 30px;
+                cursor: pointer;
+                background: #ffffff;
+                color: #000;
+            }
+
+
+
+        .footer {
+            position: relative;
+            width: 100%;
+            background-color: rgba(12, 8, 76, 1);  
+            bottom:0;
+            
+        }
+
+        .footer-content {
+            text-align: center;
+            padding-top: 10px;
+            color: rgba(255, 255, 255, .5);
+            margin: auto;
+            max-width: 1200px;
+        }
+
+            .footer-content:hover {
+                animation: glowIn 1s forwards;
+            }
+
+            .footer-content:not(:hover) {
+                animation: glowOut 1s forwards;
+            }            
+            .footer-content > h4 {
+                margin: 0;
+            }
+
+        .low > i {
+            border-top: none !important;
+        }
+
+        .floatingMenu {
+            position: fixed;
+            width: 300px;
+            height: 100vh;
+            background-color: #0c084c;
+            top: 0;
+            left: -310px;
+            box-shadow: 0px 5px 20px black;
+            z-index: 2;
+        }
+
+        .list {
+            text-align: center;
+        }
+
+            .list > ul {
+                padding: 0;
+            }
+
+                .list > ul > li {
+                    list-style: none;
+                    height: 5em;
+                }
+
+                    .list > ul > li:hover {
+                        animation: glowIn 1s forwards;
+                    }
+
+                    .list > ul > li:not(:hover) {
+                        animation: glowOut 1s forwards;
+                    }
+
+                    .list > ul > li > a {
+                        text-decoration: none;
+                        color: #f2f4f6;
+                    }
+
+
+
+        /*mobile*/
+        @media (max-width:750px) {
+            .navigationBar > h3 {
+                padding: 10px;
+                margin: auto;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navigationBar">
+        <div id="menu" class="menu"><i class="fa fa-bars"></i></div>
+        <h3 onclick="goHome()">The Jagrat Bharat News</h3>
+    </nav>
+    <div class="floatingMenu" id="floatingMenu">
+        <div class="close">
+            <i id="close" class="fa fa-times"></i>
+        </div>
+        <div class="list">
+            <ul>
+                <li><a href="Default.aspx">Home</a></li>
+                <li><a href="Categories.aspx">Categories</a></li>
+                <li><a href="AboutUs.aspx">About Us</a></li>
+                <li><a href="ContactUs.aspx">Contact Us</a></li>
+                <li>
+                    <div class="search">
+                        <input type="text" name="search" id="searchBox">
+                        <span onclick="search()"><i class="fa fa-search"></i></span>
+                    </div>
+                </li>
+                <li>
+                    <div class="share">
+                        <i class="fa fa-facebook" ></i>
+                        <i class="fa fa-twitter"></i>
+                        <i class="fa fa-youtube"></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <footer class="footer">
+        <div class="footer-content">
+            <h4 onclick="goHome()" style="cursor:pointer">The Jagrat Bharat News</h4>
+            <div class="share low">
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-youtube"></i>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <%-- Google Ads Script --%>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        // Google Ads Script
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-6877458329354934",
+            enable_page_level_ads: true
+        });
+
+        function search() {
+            let searchBox = document.getElementById("searchBox");
+            window.location = "SearchResult.aspx?search=" + searchBox.value;
+        };
+        function goHome() {
+            window.location = "Default.aspx";
+        };
+        //Floating Script
+        let menu = document.getElementById('menu');
+        let close = document.getElementById('close');
+
+        let floatingMenu = document.getElementById('floatingMenu');
+        menu.addEventListener("click", function () {
+            floatingMenu.classList.add('fadeIn');
+
+        });
+        close.addEventListener("click", function () {
+            floatingMenu.classList.add('fadeOut');
+            setTimeout(function () {
+                floatingMenu.classList.remove('fadeOut');
+                floatingMenu.classList.remove('fadeIn');
+            }, 1000);
+
+        });
+    </script>
+
+
+</body>
+</html>

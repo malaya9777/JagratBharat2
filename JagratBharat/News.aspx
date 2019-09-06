@@ -5,11 +5,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-        .container {
-            max-width: 800px;
-            margin: 80px auto 10px auto;
-            padding: 0px 20px 0px 20px;
-        }
+       
 
         .justified {
             margin-top: 15px;

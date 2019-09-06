@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home | Jagrat Bharat News" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="JagratBharat.index" %>
+﻿<%@ Page Title="Jagrat Bharat News-Home" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="JagratBharat.index" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -11,7 +11,7 @@
         .advertisement {
         }
         /*Before Ad*/
-        .container {
+        .main-container {
             max-width: 1200px;
             height: auto;
             margin: 70px auto 30px auto;
@@ -23,7 +23,6 @@
         /* Left Side bar*/
         .leftSidebar {
             background-color: rgb(255, 255, 255);
-            box-shadow: 0px 1px 3px black;
             position: relative;
         }
 
@@ -43,7 +42,6 @@
                 padding: 10px 0px;
                 background-color: #e23e00;
                 color: #fff;
-                position: absolute;
                
                 width: 100%;
                 text-align: center
@@ -67,7 +65,6 @@
         .mainContent {
             padding: 10px;
             background-color: rgba(255, 255, 255, 1);
-            box-shadow: 0px 1px 3px black;
         }
 
             .mainContent > h3 {
@@ -112,8 +109,7 @@
         }
 
         .card {
-            padding: 5px;
-            border-radius: 5px;
+            padding: 5px;            
             transition: .5s;
             height: 110px;
         }
@@ -131,7 +127,6 @@
             display: grid;
             grid-template-rows: max-content max-content auto;
             grid-gap: 10px;
-            box-shadow: 0px 1px 3px black;
             padding: 10px;
         }
 
@@ -275,7 +270,7 @@
         }
 
         @media (max-width:1000px) {
-            .container {
+            .main-container {
                 grid-template-columns: 25% 48% 25%;
             }
 
@@ -287,7 +282,7 @@
         }
 
         @media (max-width:750px) {
-            .container {
+            .main-container {
                 margin: 70px auto 30px auto;
                 display: grid;
                 grid-template-columns: 99%;
@@ -297,6 +292,7 @@
 
             .leftSidebar {
                 text-align: center;
+                
             }
 
                 .leftSidebar > ul {
@@ -348,14 +344,14 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+    <div class="main-container">
         <div class="leftSidebar">
-            <p style="margin: 10px auto 5px auto; text-align: center" class="catHead">Categories</p>
-            <ul runat="server" id="categoryList">
-                <%-- Auto Generated Categories --%>
-            </ul>
+           
+           
             <img src="Defaults/flag.gif" alt="National_Flag" class="flag_image" />
             <p class="flag_text">Jai Hind</p>
+            
+
         </div>
         <div class="mainContent">
             <h3>Top Stories</h3>
@@ -376,6 +372,9 @@
             <div style="text-align: center">
                 <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FJagratBharatNews.in%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="350" height="500" style="border: none; overflow: hidden; text-align: center" scrolling="no" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
             </div>
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v4.0"></script>
+            <div class="fb-comments" data-href="https://www.facebook.com/JagratBharatNews.in/?modal=admin_todo_tour" data-width="100%" data-numposts="5"></div>
         </div>
         <div class="rightSidebar">
             <div class="video">
@@ -428,9 +427,7 @@
                         src="https://free.timeanddate.com/clock/i6sq6m47/n1690/szw110/szh110/hocbbb/hbw6/cf100/hgr0/fas16/fdi64/mqc000/mqs4/mql20/mqw2/mqd94/mhc000/mhs3/mhl20/mhw2/mhd94/mmc000/mml10/mmw1/mmd94/hmr7/hsc000/hss1/hsl90"
                         frameborder="0" width="110" height="110"></iframe>
                 </div>
-                <div id="fb-root"></div>
-                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v4.0"></script>
-                <div class="fb-comments" data-href="https://www.facebook.com/JagratBharatNews.in/?modal=admin_todo_tour" data-width="100%" data-numposts="5"></div>
+
             </div>
         </div>
     </div>

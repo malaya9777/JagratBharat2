@@ -2,30 +2,33 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-        .container {
-            margin: 80px auto;
-            max-width: 900px;
+        main {
+            max-width:1200px;
+            margin: 30px auto;
+            padding: 0 10px;
+
         }
 
-            .container > .mainContainer {
-                padding: 60px 20px;
-                border-radius: 0px 50px 0px 50px;
-                background-color: #fff;
-                text-align: justify;
+        .mainContainer {
+            padding: 60px 20px;
+            border-radius: 0px 50px 0px 50px;
+            background-color: #fff;
+            text-align: justify;
+        }
+
+            .mainContainer > span {
+                float: right;
+                text-align: center;
             }
 
-                .container > .mainContainer > span {
-                    float: right;
-                    text-align: center;
+                .mainContainer > span > span {
+                    font-weight: bolder;
                 }
-
-                    .container > .mainContainer > span > span {
-                        font-weight: bolder;
-                    }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+    <main>
+
         <div class="mainContainer">
             <h2>Our Story</h2>
             <p>
@@ -45,5 +48,6 @@
                 <span>The JAGRAT BHARAT NEWS team</span>
             </span>
         </div>
-    </div>
+    </main>
+
 </asp:Content>

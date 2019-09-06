@@ -21,7 +21,7 @@ namespace JagratBharat
 
 
                     loadScroller(posts);
-                    loadCategory(categories);
+                   
                     loadCards(posts);
                     loadRecentVideo(posts);
                     loadHoroscope();
@@ -84,17 +84,7 @@ namespace JagratBharat
             cards.InnerHtml = infoString;
         }
 
-        private void loadCategory(List<Post_Category> categories)
-        {
-
-            string listElement = "";
-            foreach (var i in categories)
-            {
-                listElement += "<li><a href='CategoryWiseNews.aspx?categoryID=" + globalMethods.EncodeID(i.Id) + "'>" + i.Name + " </a></li>";
-            }
-            categoryList.InnerHtml = listElement;
-
-        }
+        
 
         public void setDateTime()
         {

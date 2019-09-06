@@ -59,6 +59,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Defaults\1.png" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="getImage.ashx" />
     <Content Include="Main.Master" />
     <Content Include="db.dbml">
@@ -69,6 +71,11 @@
     <None Include="db.dbml.layout">
       <DependentUpon>db.dbml</DependentUpon>
     </None>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -87,6 +94,7 @@
     <Content Include="Global.asax" />
     <Content Include="News.aspx" />
     <Content Include="SearchResult.aspx" />
+    <Content Include="styles\font-awesome.min.css" />
     <Content Include="Web.config" />
     <Content Include="Zodiac.aspx" />
   </ItemGroup>

@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>The Jagrat Bharat News</title>
     <%-- Custom Style Sheet --%>
-   
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <%-- Font awesome CSS --%>
@@ -17,6 +17,7 @@
     <meta name="theme-color" content="#0c084c">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
         body, html {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
@@ -147,7 +148,8 @@
             font-size: 24px;
         }
 
-            .share > i {
+            .share > a {
+                text-decoration:none;
                 padding: 24px;
                 color: #ffffff;
                 cursor: pointer;
@@ -178,14 +180,13 @@
         .footer {
             position: relative;
             width: 100%;
-            background-color: rgba(12, 8, 76, 1);  
-            bottom:0;
+            background-color: rgba(12, 8, 76, 1);
             
         }
 
         .footer-content {
             text-align: center;
-            padding-top: 10px;
+            padding: 30px 0;
             color: rgba(255, 255, 255, .5);
             margin: auto;
             max-width: 1200px;
@@ -197,19 +198,21 @@
 
             .footer-content:not(:hover) {
                 animation: glowOut 1s forwards;
-            }            
+            }
+
             .footer-content > h4 {
                 margin: 0;
             }
 
-        .low > i {
+        .low > a {
             border-top: none !important;
+            padding-top:10px;
         }
 
         .floatingMenu {
             position: fixed;
             width: 300px;
-            height: 100vh;
+            max-height: 100vh;
             background-color: #0c084c;
             top: 0;
             left: -310px;
@@ -254,6 +257,13 @@
             }
         }
     </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-1671834284114348",
+            enable_page_level_ads: true
+        });
+    </script>
 </head>
 <body>
     <nav class="navigationBar">
@@ -278,9 +288,8 @@
                 </li>
                 <li>
                     <div class="share">
-                        <i class="fa fa-facebook" ></i>
-                        <i class="fa fa-twitter"></i>
-                        <i class="fa fa-youtube"></i>
+                        <a href="https://www.facebook.com/JagratBharatNews.in/"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/channel/UCko-vdab8OCR6iGSnP8UOKg/featured?view_as=subscriber"><i class="fa fa-youtube"></i></a>
                     </div>
                 </li>
             </ul>
@@ -294,11 +303,11 @@
     </form>
     <footer class="footer">
         <div class="footer-content">
-            <h4 onclick="goHome()" style="cursor:pointer">The Jagrat Bharat News</h4>
+            <h4 onclick="goHome()" style="cursor: pointer">The Jagrat Bharat News</h4>
             <div class="share low">
-                <i class="fa fa-facebook"></i>
-                <i class="fa fa-twitter"></i>
-                <i class="fa fa-youtube"></i>
+                <a href="https://www.facebook.com/JagratBharatNews.in/"><i class="fa fa-facebook"></i></a>
+
+                <a href="https://www.youtube.com/channel/UCko-vdab8OCR6iGSnP8UOKg/featured?view_as=subscriber"><i class="fa fa-youtube"></i></a>
             </div>
         </div>
     </footer>
@@ -306,13 +315,9 @@
 
 
     <%-- Google Ads Script --%>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
     <script>
-        // Google Ads Script
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-6877458329354934",
-            enable_page_level_ads: true
-        });
+
 
         function search() {
             let searchBox = document.getElementById("searchBox");

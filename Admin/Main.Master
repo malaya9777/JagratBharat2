@@ -1,0 +1,153 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="Admin.Main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .notAllowed {
+            margin: 10% auto auto auto;
+            width: 80%;
+            top: 20px;
+            right: 20px;
+            text-align: center;
+            height: 80vh;
+            vertical-align: middle;
+        }
+
+        nav.navigationBar {
+            position: fixed;
+            height: 100vh;
+            width: 160px;
+            top: 0;
+            left: 0;
+            background-image: linear-gradient(90deg,rgb(0, 130, 255) 10%, rgb(0, 91, 178) 90%)
+        }
+
+
+        .userInfo {
+            margin: auto;
+            position: relative;
+            text-align: center;
+        }
+
+        .userImage {
+            margin: 10px auto;
+            border: none;
+            height: 70px;
+            width: 70px;
+            background-color: #fff;
+            border-radius: 100%;
+            display: block;
+        }
+
+        .userName {
+            color: #fff;
+        }
+
+        .menuList {
+            text-align: center;
+        }
+
+            .menuList > ul > li > a {
+                text-decoration: none;
+                color: #fff;
+                text-transform: uppercase;
+            }
+
+            .menuList > ul > li {
+                list-style: none;
+                height: 40px;
+                padding: 30px 0px 0px 0px;
+            }
+
+        .logout {
+            color: orange !important;
+        }
+
+        .textBox, .checkbox, .btnSubmit {
+            height: 30px;
+            width: 250px;
+            text-indent: 8px;
+            border: 1px solid rgba(0,0,0,.2);
+            border-radius: 3px;
+            margin: 10px auto auto auto;
+        }
+
+        .btnSubmit {
+            border: none;
+            background-color: #00b715;
+            color: #fff;
+            border-radius: 3px;
+        }
+
+        .btn {
+            height: 25px;
+            font-size: 10px;
+            width: 70px;
+            border: none;
+            border-radius: 3px;
+        }
+
+        .green {
+            background-color: #00b715;
+            color: #fff;
+        }
+
+        .orange {
+            background-color: #ff6a00;
+            color: #fff;
+        }
+        .red {
+            background-color: #ff0000;
+            color: #fff;
+        }
+
+        .modalBackground {
+            background-color: Gray;
+            filter: alpha(opacity=50);
+            opacity: 0.7;
+        }
+
+        @media (max-width:1200px) {
+            body {
+            }
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <nav class="navigationBar">
+            <div class="userInfo">
+                <img id="userImg" class="userImage" src="images/default/user.png" />
+            </div>
+            <div class="menuList">
+                <ul>
+                    <li><a href="Profile.aspx">
+                        <asp:Label ID="userName" runat="server" CssClass="userName"></asp:Label></a></li>
+                    <li><a href="Dashboard.aspx">Dashboard</a></li>
+                    <li><a href="ManageUser.aspx">Manage User</a></li>
+                    <li><a href="PostNews.aspx">Post News</a></li>
+                    <li><a href="Horoscope.aspx">Horoscope</a></li>
+                    <li><a href="Signout.aspx" class="logout">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

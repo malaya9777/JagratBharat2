@@ -16,7 +16,7 @@ namespace JagratBharat
                 setDateTime();
                 using (dbDataContext db = new dbDataContext())
                 {
-                    var categories = db.Categories.ToList();
+                    var categories = db.Post_Categories.ToList();
                     var posts = db.Posts.Where(n => n.Submitted == true).ToList();
 
 
@@ -84,7 +84,7 @@ namespace JagratBharat
             cards.InnerHtml = infoString;
         }
 
-        private void loadCategory(List<Category> categories)
+        private void loadCategory(List<Post_Category> categories)
         {
 
             string listElement = "";

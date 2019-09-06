@@ -30,21 +30,21 @@ namespace JagratBharat
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertCategory(Category instance);
-    partial void UpdateCategory(Category instance);
-    partial void DeleteCategory(Category instance);
+    partial void InsertPost_Category(Post_Category instance);
+    partial void UpdatePost_Category(Post_Category instance);
+    partial void DeletePost_Category(Post_Category instance);
+    partial void InsertPost_Paragraph(Post_Paragraph instance);
+    partial void UpdatePost_Paragraph(Post_Paragraph instance);
+    partial void DeletePost_Paragraph(Post_Paragraph instance);
     partial void InsertPost(Post instance);
     partial void UpdatePost(Post instance);
     partial void DeletePost(Post instance);
-    partial void InsertParagraph(Paragraph instance);
-    partial void UpdateParagraph(Paragraph instance);
-    partial void DeleteParagraph(Paragraph instance);
-    partial void InsertHoroscope(Horoscope instance);
-    partial void UpdateHoroscope(Horoscope instance);
-    partial void DeleteHoroscope(Horoscope instance);
     partial void InsertZodiac(Zodiac instance);
     partial void UpdateZodiac(Zodiac instance);
     partial void DeleteZodiac(Zodiac instance);
+    partial void InsertHoroscope(Horoscope instance);
+    partial void UpdateHoroscope(Horoscope instance);
+    partial void DeleteHoroscope(Horoscope instance);
     #endregion
 		
 		public dbDataContext() : 
@@ -77,11 +77,19 @@ namespace JagratBharat
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Category> Categories
+		public System.Data.Linq.Table<Post_Category> Post_Categories
 		{
 			get
 			{
-				return this.GetTable<Category>();
+				return this.GetTable<Post_Category>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Post_Paragraph> Post_Paragraphs
+		{
+			get
+			{
+				return this.GetTable<Post_Paragraph>();
 			}
 		}
 		
@@ -93,11 +101,11 @@ namespace JagratBharat
 			}
 		}
 		
-		public System.Data.Linq.Table<Paragraph> Paragraphs
+		public System.Data.Linq.Table<Zodiac> Zodiacs
 		{
 			get
 			{
-				return this.GetTable<Paragraph>();
+				return this.GetTable<Zodiac>();
 			}
 		}
 		
@@ -108,18 +116,10 @@ namespace JagratBharat
 				return this.GetTable<Horoscope>();
 			}
 		}
-		
-		public System.Data.Linq.Table<Zodiac> Zodiacs
-		{
-			get
-			{
-				return this.GetTable<Zodiac>();
-			}
-		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Categories")]
-	public partial class Category : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Post_Categories")]
+	public partial class Post_Category : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -138,7 +138,7 @@ namespace JagratBharat
     partial void OnNameChanged();
     #endregion
 		
-		public Category()
+		public Post_Category()
 		{
 			OnCreated();
 		}
@@ -179,6 +179,116 @@ namespace JagratBharat
 					this._Name = value;
 					this.SendPropertyChanged("Name");
 					this.OnNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Post_Paragraphs")]
+	public partial class Post_Paragraph : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _PostID;
+		
+		private string _Paragraphs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnPostIDChanging(System.Nullable<int> value);
+    partial void OnPostIDChanged();
+    partial void OnParagraphsChanging(string value);
+    partial void OnParagraphsChanged();
+    #endregion
+		
+		public Post_Paragraph()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostID", DbType="Int")]
+		public System.Nullable<int> PostID
+		{
+			get
+			{
+				return this._PostID;
+			}
+			set
+			{
+				if ((this._PostID != value))
+				{
+					this.OnPostIDChanging(value);
+					this.SendPropertyChanging();
+					this._PostID = value;
+					this.SendPropertyChanged("PostID");
+					this.OnPostIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paragraphs", DbType="NVarChar(MAX)")]
+		public string Paragraphs
+		{
+			get
+			{
+				return this._Paragraphs;
+			}
+			set
+			{
+				if ((this._Paragraphs != value))
+				{
+					this.OnParagraphsChanging(value);
+					this.SendPropertyChanging();
+					this._Paragraphs = value;
+					this.SendPropertyChanged("Paragraphs");
+					this.OnParagraphsChanged();
 				}
 			}
 		}
@@ -482,17 +592,17 @@ namespace JagratBharat
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Paragraphs")]
-	public partial class Paragraph : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Zodiacs")]
+	public partial class Zodiac : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _Id;
 		
-		private System.Nullable<int> _PostID;
+		private string _Zodiac_Odia;
 		
-		private string _Paragraphs;
+		private string _Zodiac_English;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -500,13 +610,13 @@ namespace JagratBharat
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnPostIDChanging(System.Nullable<int> value);
-    partial void OnPostIDChanged();
-    partial void OnParagraphsChanging(string value);
-    partial void OnParagraphsChanged();
+    partial void OnZodiac_OdiaChanging(string value);
+    partial void OnZodiac_OdiaChanged();
+    partial void OnZodiac_EnglishChanging(string value);
+    partial void OnZodiac_EnglishChanged();
     #endregion
 		
-		public Paragraph()
+		public Zodiac()
 		{
 			OnCreated();
 		}
@@ -531,42 +641,42 @@ namespace JagratBharat
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostID", DbType="Int")]
-		public System.Nullable<int> PostID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zodiac_Odia", DbType="NVarChar(100)")]
+		public string Zodiac_Odia
 		{
 			get
 			{
-				return this._PostID;
+				return this._Zodiac_Odia;
 			}
 			set
 			{
-				if ((this._PostID != value))
+				if ((this._Zodiac_Odia != value))
 				{
-					this.OnPostIDChanging(value);
+					this.OnZodiac_OdiaChanging(value);
 					this.SendPropertyChanging();
-					this._PostID = value;
-					this.SendPropertyChanged("PostID");
-					this.OnPostIDChanged();
+					this._Zodiac_Odia = value;
+					this.SendPropertyChanged("Zodiac_Odia");
+					this.OnZodiac_OdiaChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paragraphs", DbType="NVarChar(MAX)")]
-		public string Paragraphs
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zodiac_English", DbType="VarChar(100)")]
+		public string Zodiac_English
 		{
 			get
 			{
-				return this._Paragraphs;
+				return this._Zodiac_English;
 			}
 			set
 			{
-				if ((this._Paragraphs != value))
+				if ((this._Zodiac_English != value))
 				{
-					this.OnParagraphsChanging(value);
+					this.OnZodiac_EnglishChanging(value);
 					this.SendPropertyChanging();
-					this._Paragraphs = value;
-					this.SendPropertyChanged("Paragraphs");
-					this.OnParagraphsChanged();
+					this._Zodiac_English = value;
+					this.SendPropertyChanged("Zodiac_English");
+					this.OnZodiac_EnglishChanged();
 				}
 			}
 		}
@@ -725,116 +835,6 @@ namespace JagratBharat
 					this._Horoscope_English = value;
 					this.SendPropertyChanged("Horoscope_English");
 					this.OnHoroscope_EnglishChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Zodiacs")]
-	public partial class Zodiac : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Zodiac_Odia;
-		
-		private string _Zodiac_English;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnZodiac_OdiaChanging(string value);
-    partial void OnZodiac_OdiaChanged();
-    partial void OnZodiac_EnglishChanging(string value);
-    partial void OnZodiac_EnglishChanged();
-    #endregion
-		
-		public Zodiac()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zodiac_Odia", DbType="NVarChar(100)")]
-		public string Zodiac_Odia
-		{
-			get
-			{
-				return this._Zodiac_Odia;
-			}
-			set
-			{
-				if ((this._Zodiac_Odia != value))
-				{
-					this.OnZodiac_OdiaChanging(value);
-					this.SendPropertyChanging();
-					this._Zodiac_Odia = value;
-					this.SendPropertyChanged("Zodiac_Odia");
-					this.OnZodiac_OdiaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zodiac_English", DbType="VarChar(100)")]
-		public string Zodiac_English
-		{
-			get
-			{
-				return this._Zodiac_English;
-			}
-			set
-			{
-				if ((this._Zodiac_English != value))
-				{
-					this.OnZodiac_EnglishChanging(value);
-					this.SendPropertyChanging();
-					this._Zodiac_English = value;
-					this.SendPropertyChanged("Zodiac_English");
-					this.OnZodiac_EnglishChanged();
 				}
 			}
 		}

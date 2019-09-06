@@ -15,12 +15,12 @@ namespace JagratBharat
             {
                 using (dbDataContext db = new dbDataContext())
                 {
-                    loadRoller(db.Categories.ToList());
+                    loadRoller(db.Post_Categories.ToList());
                 }
             }
         }
 
-        private void loadRoller(List<Category> list)
+        private void loadRoller(List<Post_Category> list)
         {
             var rollers = "";
 

@@ -12,7 +12,7 @@ namespace JagratBharat
         {
             using(dbDataContext db = new dbDataContext())
             {
-                return db.Categories.Where(n => n.Id == categoryID).Select(n=>n.Name).SingleOrDefault();
+                return db.Post_Categories.Where(n => n.Id == categoryID).Select(n=>n.Name).SingleOrDefault();
             }
         }
         public static string EncodeID(int ID)

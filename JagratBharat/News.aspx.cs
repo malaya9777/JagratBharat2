@@ -34,7 +34,7 @@ namespace JagratBharat
         private void loadData(int ID)
         {
             var post = db.Posts.Where(n => n.Id == ID).FirstOrDefault();
-            var paragraphs = db.Paragraphs.Where(n => n.PostID == post.Id).ToList();
+            var paragraphs = db.Post_Paragraphs.Where(n => n.PostID == post.Id).ToList();
             if (post != null)
             {
                 Page.Title = post.HeadLine +" | Jagrat Bharat News";
@@ -64,7 +64,7 @@ namespace JagratBharat
         {
             og_site_name.Attributes["content"] = "Jagrat Bharat";
             og_title.Attributes["content"] = post.HeadLine;
-            og_description.Attributes["content"] = db.Paragraphs.Where(n => n.PostID == post.Id).Select(n => n.Paragraphs).FirstOrDefault();
+            og_description.Attributes["content"] = db.Post_Paragraphs.Where(n => n.PostID == post.Id).Select(n => n.Paragraphs).FirstOrDefault();
 
             var path = new Uri(Page.Request.Url, "getImage.ashx");
             var shareURL = new Uri(Page.Request.Url, Request.RawUrl).ToString();
@@ -90,7 +90,7 @@ namespace JagratBharat
             }
         }
 
-        private void loadParagraph(List<Paragraph> paragraphs, string videoFrame)
+        private void loadParagraph(List<Post_Paragraph> paragraphs, string videoFrame)
         {
             foreach (var paragraph in paragraphs)
             {

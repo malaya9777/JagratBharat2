@@ -69,6 +69,7 @@
     <None Include="Data.dbml.layout">
       <DependentUpon>Data.dbml</DependentUpon>
     </None>
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

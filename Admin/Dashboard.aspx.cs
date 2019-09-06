@@ -83,7 +83,7 @@ namespace Admin
 
         private void loadCategoryGrid()
         {
-            var categories = db.Categories.Select(n => new { n.Id, n.Name }).ToList();
+            var categories = db.Post_Categories.Select(n => new { n.Id, n.Name }).ToList();
             if (categories.Count > 0)
             {
                 grdCategories.DataSource = categories;
@@ -108,7 +108,7 @@ namespace Admin
 
             int Id = Convert.ToInt32((row.Cells[1].Text));
             string Name = ((TextBox)row.Cells[2].Controls[0]).Text;
-            var category = db.Categories.Where(n => n.Id == Id).SingleOrDefault();
+            var category = db.Post_Categories.Where(n => n.Id == Id).SingleOrDefault();
             category.Name = Name;
             db.SubmitChanges();
             grdCategories.EditIndex = -1;
@@ -124,9 +124,9 @@ namespace Admin
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            var category = new Category();
+            var category = new Post_Category();
             category.Name = txtCategory.Text;
-            db.Categories.InsertOnSubmit(category);
+            db.Post_Categories.InsertOnSubmit(category);
             db.SubmitChanges();
             loadCategoryGrid();
         }     

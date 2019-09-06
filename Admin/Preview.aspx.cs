@@ -21,7 +21,7 @@ namespace Admin
         private void loadData(int ID)
         {
             var post = db.Posts.Where(n => n.Id == ID).FirstOrDefault();
-            var paragraphs = db.Paragraphs.Where(n => n.PostID == post.Id).ToList();
+            var paragraphs = db.Post_Paragraphs.Where(n => n.PostID == post.Id).ToList();
             if (post != null)
             {
                 Page.Title = post.HeadLine;
@@ -37,7 +37,7 @@ namespace Admin
 
 
 
-        private void loadParagraph(List<Paragraph> paragraphs, string videoFrame)
+        private void loadParagraph(List<Post_Paragraph> paragraphs, string videoFrame)
         {
             foreach (var paragraph in paragraphs)
             {

@@ -92,7 +92,7 @@ namespace Admin
         {
             using(DataDataContext db = new DataDataContext())
             {
-                var category = db.Categories.Where(n => n.Id == categoryID).SingleOrDefault();
+                var category = db.Post_Categories.Where(n => n.Id == categoryID).SingleOrDefault();
                 if(category != null)
                 {
                     return category.Name;

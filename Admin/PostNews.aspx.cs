@@ -58,7 +58,7 @@ namespace Admin
         // Load Categories to dropdown
         private void loadCategories()
         {
-            var categories = db.Categories.ToList();
+            var categories = db.Post_Categories.ToList();
             ddlCategory.DataSource = categories;
             ddlCategory.DataTextField = "Name";
             ddlCategory.DataValueField = "Id";
@@ -73,10 +73,10 @@ namespace Admin
             {
                 if (msg != string.Empty)
                 {
-                    Paragraph p = new Paragraph();
+                    Post_Paragraph p = new Post_Paragraph();
                     p.PostID = postID;
                     p.Paragraphs = msg;
-                    db.Paragraphs.InsertOnSubmit(p);
+                    db.Post_Paragraphs.InsertOnSubmit(p);
                     db.SubmitChanges();
                 }
             }
@@ -152,8 +152,8 @@ namespace Admin
         // Remove Old paragraph to add new Paragraph
         private void removeOldParagraphs(int id)
         {
-            var paragraphs = db.Paragraphs.Where(n => n.PostID == id);
-            db.Paragraphs.DeleteAllOnSubmit(paragraphs);
+            var paragraphs = db.Post_Paragraphs.Where(n => n.PostID == id);
+            db.Post_Paragraphs.DeleteAllOnSubmit(paragraphs);
             db.SubmitChanges();
         }
 
@@ -231,7 +231,7 @@ namespace Admin
         // To retrice Paragraph from Paragraphs table and insert to multiline textbox  
         private string loadParagraphs(int postID)
         {
-            var paragraphs = db.Paragraphs.Where(n => n.PostID == postID).ToList();
+            var paragraphs = db.Post_Paragraphs.Where(n => n.PostID == postID).ToList();
             string _paragraph = "";
             foreach (var paragraph in paragraphs)
             {

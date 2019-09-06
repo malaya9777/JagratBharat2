@@ -57,7 +57,7 @@ namespace Admin
     #endregion
 		
 		public DataDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["JagratBharatConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["JagratBharatConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

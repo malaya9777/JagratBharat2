@@ -5,10 +5,11 @@
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-       
-        main{
-            margin:30px 0;
+
+        main {
+            margin: 30px 0;
         }
+
         .justified {
             margin-top: 15px;
             text-align: justify;
@@ -33,6 +34,7 @@
             margin-top: 15px;
             height: 40px;
             width: 200px;
+            margin-left: 10px;
             background-color: red;
         }
 
@@ -44,6 +46,7 @@
 
         .infoDetails {
             margin-top: 10px;
+            margin-left: 10px;
             text-align: left;
             color: rgb(0,0,0);
         }
@@ -62,6 +65,12 @@
             display: block;
             color: white;
             top: 15px;
+        }
+
+        .PostContent {
+            margin: 10px auto;
+            padding: 10px;
+            background: #fff;
         }
 
         .cardHeadline {
@@ -99,6 +108,7 @@
 
         .shareButtons {
             display: inline-flex;
+            margin-left: 10px;
         }
 
         .fb-like {
@@ -141,8 +151,7 @@
             }
 
             .cards {
-                
-                grid-template-columns: repeat(1, 1fr);                
+                grid-template-columns: repeat(1, 1fr);
             }
 
             .PostHeader {
@@ -183,7 +192,8 @@
                     <a class="whatsaap" id="whatsaapbutton" runat="server" href="whatsaap://send?text=" data-action="share/whatsapp/share"><i class="fa fa-whatsapp"></i>Share</a>
                     <a class="twitter" id="twitterbutton" runat="server" href="https://twitter.com/intent/tweet?text=" data-size="large"><i class="fa fa-twitter"></i>Tweet</a>
                 </div>
-                <div id="PostContent" runat="server"></div>
+                <div id="PostContent" runat="server" class="PostContent">
+                </div>
                 <%-- Share Buttons --%>
 
                 <div class="shareButtons">

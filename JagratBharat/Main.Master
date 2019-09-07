@@ -433,6 +433,7 @@
         
         search.addEventListener('click', function () {
             search_box.style.display = 'grid';
+            
         });
         search_close.addEventListener('click', function () {
             search_box.style.display = 'none';

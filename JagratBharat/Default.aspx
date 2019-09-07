@@ -99,9 +99,8 @@
         .cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            grid-gap: 5px;
-            padding: 10px;
-            background-color: rgba(0,0,0,.1);
+            grid-gap: 5px;            
+            
         }
 
         .card_container {

@@ -15,7 +15,7 @@ namespace JagratBharat
             {
                using(dbDataContext db = new dbDataContext())
                 {
-                    var categories = db.Post_Categories.Take(4).ToList();
+                    var categories = db.Post_Categories.Take(5).ToList();
                     loadCategory(categories);
                 }
             }

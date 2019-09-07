@@ -6,7 +6,9 @@
         @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
        
-
+        main{
+            margin:30px 0;
+        }
         .justified {
             margin-top: 15px;
             text-align: justify;

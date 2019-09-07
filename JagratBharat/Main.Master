@@ -24,6 +24,7 @@
             font-family: 'Manjari', sans-serif;
             background: rgb(242, 242, 242);
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -111,6 +112,18 @@
                                 color: #ff6363;
                             }
 
+        .sticky-position {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgb(242, 242, 242);
+            z-index: 3;
+        }
+
+        .static-position {
+            position: static;
+        }
+
         footer {
             background: #d8d8d8;
             padding: 20px 0;
@@ -139,6 +152,62 @@
                     font-size: 20px;
                     padding: 0 5px;
                 }
+
+        .left-menu {
+            position: fixed;
+            text-align: center;
+            left: -300px;
+            top: 0;
+            height: 100vh;
+            width: 300px;
+            background: #e4e4e4;
+            z-index: 4;
+            box-shadow: 1px 1px 5px rgba(0,0,0,.2);
+            transition:1s;
+        }
+        .fade-in{
+            left: 0;
+        }
+
+            .left-menu > .close {
+                padding: 10px;
+                color: rgb(131, 131, 131);
+                position: absolute;
+                right: 0;
+            }
+
+            .left-menu > img {
+                width: 200px;
+                margin: 50px auto;
+            }
+
+
+            .left-menu > ul > li {
+                list-style: none;
+                text-align: left;
+                padding: 10px;
+            }
+
+                .left-menu > ul > li > a {
+                    text-decoration: none;
+                    color: rgb(131, 131, 131);
+                }
+                .menu-footer{
+                    position:absolute;
+                    bottom:10px;
+                    width:100%;
+                }
+                .menu-footer>ul{
+                    padding:0;
+                }
+                .menu-footer>ul>li{
+                    list-style:none;
+                    display:inline;
+                    padding:10px;
+                }
+                 .menu-footer>ul>li>i{
+                     font-size:30px;
+                 }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
@@ -158,8 +227,8 @@
                     <li><a href="ContactUs.aspx">CONTACT</a></li>
                 </ul>
                 <ul class="float-right">
-                    <li><i class="fa fa-facebook-square"></i></li>
-                    <li><i class="fa fa-youtube"></i></li>
+                    <li><i class="fa fa-facebook-square" onclick="window.location='https://www.facebook.com/JagratBharatNews.in/'"></i></li>
+                    <li><i class="fa fa-youtube" onclick="window.location='https://www.youtube.com/channel/UCko-vdab8OCR6iGSnP8UOKg'"></i></li>
                 </ul>
             </div>
 
@@ -171,26 +240,22 @@
                 </div>
             </div>
         </div>
-        <div class="header-bottom">
+        <div class="header-bottom" id="header-bottom">
             <div class="header-bottom-container container">
-                <span class="menu float-right">
+                <span class="menu float-left" id="menu">
                     <i class="fa fa-bars"></i>
                 </span>
                 <nav>
                     <ul id="category_list" runat="server">
-                        <li><a href="#">National</a></li>
-                        <li><a href="#">Inter National</a></li>
-                        <li><a href="#">Local</a></li>
-                        <li><a href="#">State</a></li>
-                        <li><a href="#">More </a></li>
                     </ul>
                 </nav>
 
-                <span class="search">
+                <span class="search float-right" id="search">
                     <i class="fa fa-search"></i>
                 </span>
             </div>
         </div>
+
     </header>
     <%-- Main Body --%>
     <form id="form1" runat="server">
@@ -211,9 +276,40 @@
             <p><span class="copy">©</span><span class="year"></span>Jagratbharat News All rights reserved</p>
         </div>
     </footer>
+
+    <div class="left-menu" id="left-menu">
+        <div class="close" id="close">
+            <i class="fa fa-close"></i>
+        </div>
+        <img src="Defaults/1.png" alt="Jagrat Bharat News Logo">
+
+        <ul>
+            <li><a href="Default.aspx">Home</a></li>
+            <li><a href="AboutUs.aspx">About</a></li>
+            <li><a href="ContactUs.aspx">Contact</a></li>
+            <li><a href="Categories.aspx">Categories</a></li>
+        </ul>
+        <div class="menu-footer">
+            <ul>
+                <li><i class="fa fa-facebook-square" onclick="window.location='https://www.facebook.com/JagratBharatNews.in/'"></i></li>
+                <li><i class="fa fa-youtube" onclick="window.location='https://www.youtube.com/channel/UCko-vdab8OCR6iGSnP8UOKg'"></i></li>
+            </ul>
+        </div>
+    </div>
+
+
     <%-- Google Ads Script --%>
 
     <script>
+        let headerbottom = document.getElementById('header-bottom');
+        let sticky = headerbottom.offsetTop;
+        window.onscroll = function () {
+            if (window.pageYOffset > sticky) {
+                headerbottom.classList.add("sticky-position");
+            } else {
+                headerbottom.classList.remove("sticky-position");
+            }
+        }
 
 
         function search() {
@@ -227,17 +323,13 @@
         let menu = document.getElementById('menu');
         let close = document.getElementById('close');
 
-        let floatingMenu = document.getElementById('floatingMenu');
+        let floatingMenu = document.getElementById('left-menu');
         menu.addEventListener("click", function () {
-            floatingMenu.classList.add('fadeIn');
+            floatingMenu.classList.add('fade-in');
 
         });
         close.addEventListener("click", function () {
-            floatingMenu.classList.add('fadeOut');
-            setTimeout(function () {
-                floatingMenu.classList.remove('fadeOut');
-                floatingMenu.classList.remove('fadeIn');
-            }, 1000);
+            floatingMenu.classList.remove('fade-in');         
 
         });
     </script>

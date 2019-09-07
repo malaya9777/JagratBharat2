@@ -22,7 +22,6 @@
         }
         /* Left Side bar*/
         .leftSidebar {
-            background-color: rgb(255, 255, 255);
             position: relative;
         }
 
@@ -35,6 +34,7 @@
             }
 
             .leftSidebar > .flag_image {
+                background-color: rgb(255, 255, 255);
                 width: 100%;
             }
 
@@ -42,7 +42,7 @@
                 padding: 10px 0px;
                 background-color: #e23e00;
                 color: #fff;
-               
+                margin: 0;
                 width: 100%;
                 text-align: center
             }
@@ -109,7 +109,7 @@
         }
 
         .card {
-            padding: 5px;            
+            padding: 5px;
             transition: .5s;
             height: 110px;
         }
@@ -123,7 +123,6 @@
 
         /* Side Content */
         .rightSidebar {
-            background-color: rgba(255, 255, 255, 1);
             display: grid;
             grid-template-rows: max-content max-content auto;
             grid-gap: 10px;
@@ -195,7 +194,7 @@
         .callender {
             height: 80px;
             display: grid;
-            grid-template-columns: 40% 60%;
+            grid-template-columns: 25% 75%;
             grid-template-rows: 50% 50%;
             border: 1px solid rgba(0, 0, 0, .1);
             cursor: pointer;
@@ -292,7 +291,6 @@
 
             .leftSidebar {
                 text-align: center;
-                
             }
 
                 .leftSidebar > ul {
@@ -306,6 +304,7 @@
                 .leftSidebar > p.flag_text {
                     top: unset;
                     bottom: 0px;
+                    margin: 0 !important;
                 }
 
                 .leftSidebar > .catHead {
@@ -346,11 +345,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="main-container">
         <div class="leftSidebar">
-           
-           
+
+
             <img src="Defaults/flag.gif" alt="National_Flag" class="flag_image" />
             <p class="flag_text">Jai Hind</p>
-            
+
 
         </div>
         <div class="mainContent">

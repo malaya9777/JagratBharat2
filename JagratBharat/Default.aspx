@@ -23,6 +23,7 @@
         /* Left Side bar*/
         .leftSidebar {
             position: relative;
+            background-color: rgb(255, 255, 255);
         }
 
             .leftSidebar > ul {
@@ -34,7 +35,7 @@
             }
 
             .leftSidebar > .flag_image {
-                background-color: rgb(255, 255, 255);
+                
                 width: 100%;
             }
 
@@ -127,6 +128,7 @@
             grid-template-rows: max-content max-content auto;
             grid-gap: 10px;
             padding: 10px;
+            background-color: rgb(255, 255, 255);
         }
 
         .video {
@@ -143,8 +145,8 @@
 
         .scroll {
             height: 30px;
-            background-color: red;
-            color: #fff;
+            background-color: #fff;
+           
             overflow-x: hidden;
             overflow-y: hidden;
         }
@@ -159,7 +161,7 @@
 
                 .scroll > p > a {
                     text-decoration: none;
-                    color: white;
+                    color: red;
                 }
 
                 .scroll > p:hover {

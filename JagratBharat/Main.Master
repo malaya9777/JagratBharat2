@@ -84,33 +84,60 @@
             border: solid 1px rgba(131, 131, 131, 0.13);
         }
 
-            .header-bottom .header-bottom-container {
-                display: -ms-grid;
-                display: grid;
-                -ms-grid-columns: auto auto auto;
-                grid-template-columns: auto auto auto;
-                -webkit-box-align: center;
-                -ms-flex-align: center;
-                align-items: center;
+            .header-bottom .header-bottom-container img {
+                display: none;
             }
 
-                .header-bottom .header-bottom-container nav {
-                    text-align: center;
+        @media (max-width:700px) {
+
+            .header-bottom .header-bottom-container nav {
+                display: none;
+            }
+
+            .header-bottom .header-bottom-container img {
+                display: block;
+                width: 150px;
+                margin: 0 auto;
+                padding: 0 10px;
+            }
+
+            .topbar {
+                display: none;
+            }
+
+            .header-top {
+                display: none;
+            }
+        }
+
+        .header-bottom .header-bottom-container {
+            display: -ms-grid;
+            display: grid;
+            -ms-grid-columns: auto auto auto;
+            grid-template-columns: auto auto auto;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+
+            .header-bottom .header-bottom-container nav {
+                text-align: center;
+            }
+
+                .header-bottom .header-bottom-container nav ul li {
+                    display: inline;
                 }
 
-                    .header-bottom .header-bottom-container nav ul li {
-                        display: inline;
+                    .header-bottom .header-bottom-container nav ul li a {
+                        text-decoration: none;
+                        padding: 0 20px;
+                        color: #000;
                     }
 
-                        .header-bottom .header-bottom-container nav ul li a {
-                            text-decoration: none;
-                            padding: 0 20px;
-                            color: #000;
+                        .header-bottom .header-bottom-container nav ul li a i {
+                            color: #ff6363;
                         }
-
-                            .header-bottom .header-bottom-container nav ul li a i {
-                                color: #ff6363;
-                            }
 
         .sticky-position {
             position: fixed;
@@ -163,51 +190,108 @@
             background: #e4e4e4;
             z-index: 4;
             box-shadow: 1px 1px 5px rgba(0,0,0,.2);
-            transition:1s;
+            transition: 1s;
         }
-        .fade-in{
+
+        .fade-in {
             left: 0;
         }
 
-            .left-menu > .close {
-                padding: 10px;
+        .left-menu > .close {
+            padding: 10px;
+            color: rgb(131, 131, 131);
+            position: absolute;
+            right: 0;
+        }
+
+        .left-menu > img {
+            width: 200px;
+            margin: 50px auto;
+        }
+
+
+        .left-menu > ul > li {
+            list-style: none;
+            text-align: left;
+            padding: 10px;
+        }
+
+            .left-menu > ul > li > a {
+                text-decoration: none;
                 color: rgb(131, 131, 131);
+            }
+
+        .menu-footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+        }
+
+            .menu-footer > ul {
+                padding: 0;
+            }
+
+                .menu-footer > ul > li {
+                    list-style: none;
+                    display: inline;
+                    padding: 10px;
+                }
+
+                    .menu-footer > ul > li > i {
+                        font-size: 30px;
+                    }
+
+        .menu {
+            padding: 0 0 0 10px;
+        }
+
+        .search {
+            padding: 0 10px 0 0;
+        }
+
+        .search-box {
+            top: 0;
+            left: 0;
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            background: #000;
+            opacity: .9;
+            z-index: 4;
+            display: none;
+            align-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+            .search-box > i {
                 position: absolute;
-                right: 0;
+                top: 30px;
+                right: 30px;
+                color:#fff;
             }
 
-            .left-menu > img {
-                width: 200px;
-                margin: 50px auto;
-            }
+        .search-box-container {
+            display: inline;
+        }
 
-
-            .left-menu > ul > li {
-                list-style: none;
+            .search-box-container input {
+                all: unset;
                 text-align: left;
+                width: 200px;
+                margin: 0 auto;
+                background: none;
+                border: none;
+                border-bottom: solid 2px rgb(242, 242, 242);
                 padding: 10px;
+                font-size: 18px;
+                color: #fff;
             }
 
-                .left-menu > ul > li > a {
-                    text-decoration: none;
-                    color: rgb(131, 131, 131);
-                }
-                .menu-footer{
-                    position:absolute;
-                    bottom:10px;
-                    width:100%;
-                }
-                .menu-footer>ul{
-                    padding:0;
-                }
-                .menu-footer>ul>li{
-                    list-style:none;
-                    display:inline;
-                    padding:10px;
-                }
-                 .menu-footer>ul>li>i{
-                     font-size:30px;
-                 }
+            .search-box-container i {
+                color: #fff;
+                cursor: pointer;
+            }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
@@ -249,7 +333,7 @@
                     <ul id="category_list" runat="server">
                     </ul>
                 </nav>
-
+                <img src="Defaults/1.png" alt="Jagrat Bharat News Logo">
                 <span class="search float-right" id="search">
                     <i class="fa fa-search"></i>
                 </span>
@@ -296,6 +380,13 @@
             </ul>
         </div>
     </div>
+    <div class="search-box"  id="search-box">
+        <i class="fa fa-close" id="search_close"></i>
+        <div class="search-box-container">
+            <input type="text" class="textInput" id="searchText" placeholder="Search" />
+            <i class="fa fa-search" onclick="search_result()"></i>
+        </div>
+    </div>
 
 
     <%-- Google Ads Script --%>
@@ -312,13 +403,15 @@
         }
 
 
-        function search() {
-            let searchBox = document.getElementById("searchBox");
+        function search_result() {
+            let searchBox = document.getElementById("searchText");
             window.location = "SearchResult.aspx?search=" + searchBox.value;
         };
         function goHome() {
             window.location = "Default.aspx";
         };
+
+
         //Floating Script
         let menu = document.getElementById('menu');
         let close = document.getElementById('close');
@@ -329,9 +422,23 @@
 
         });
         close.addEventListener("click", function () {
-            floatingMenu.classList.remove('fade-in');         
+            floatingMenu.classList.remove('fade-in');
 
         });
+
+        //Search Button Script
+        let search = document.getElementById('search');
+        let search_close = document.getElementById('search_close');
+        let search_box = document.getElementById('search-box');
+        
+        search.addEventListener('click', function () {
+            search_box.style.display = 'grid';
+        });
+        search_close.addEventListener('click', function () {
+            search_box.style.display = 'none';
+        })
+
+        
     </script>
 
 

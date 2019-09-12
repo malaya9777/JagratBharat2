@@ -452,10 +452,11 @@
         });
         search_close.addEventListener('click', function () {
             search_box.style.display = 'none';
-        })
+        });
 
         
     </script>
+    <script src="lazyload.js"></script>
 
 
 </body>

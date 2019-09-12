@@ -8,343 +8,313 @@
     <meta property="og:description" content="Satya ra sandhana" />
     <meta property="og:image" content="https://www.jagratbharatnews.in/Defaults/1.png" />
     <style>
-        .advertisement {
-        }
-        /*Before Ad*/
-        .main-container {
-            max-width: 1200px;
-            height: auto;
-            margin: 70px auto 30px auto;
-            display: grid;
-            grid-gap: 1%;
-            grid-template-columns: 20% 58% 20%;
-            grid-template-rows: auto;
-        }
-        /* Left Side bar*/
-        .leftSidebar {
-            position: relative;
-            background-color: rgb(255, 255, 255);
-        }
-
-            .leftSidebar > ul {
-                list-style-type: none;
-                padding: 0px;
-                margin: 0px auto 0px auto;
-                height: 300px;
-                overflow-y: scroll;
-            }
-
-            .leftSidebar > .flag_image {
-                
-                width: 100%;
-            }
-
-            .leftSidebar > p.flag_text {
-                padding: 10px 0px;
-                background-color: #e23e00;
-                color: #fff;
-                margin: 0;
-                width: 100%;
-                text-align: center
-            }
-
-            .leftSidebar > ul > li {
-                width: 80%;
-                padding: 10px;
-                text-align: center;
-                border: 1px solid rgba(0,0,0,.1);
-                background-color: black;
-                border-radius: 5px;
-                margin: 5px auto 0px auto;
-            }
-
-                .leftSidebar > ul > li > a {
-                    text-decoration: none;
-                    color: #fff;
-                }
-        /*Main Content*/
-        .mainContent {
+        .lable {
+            border: solid 1px #ff6363;
             padding: 10px;
-            background-color: rgba(255, 255, 255, 1);
+            background: #fff;
+            color: #ff6363;
         }
 
-            .mainContent > h3 {
-                text-align: center;
-                padding: 10px 0px;
-                margin: 0;
-                background-color: #212121;
-                color: white;
-            }
-
-        .catSpan {
+        .scroller-container {
             position: relative;
-            padding: 5px;
-            background-color: red;
-            float: left;
-            display: block;
-            color: white;
-            font-size: 10px;
-            top: -5px;
-            left: -5px;
-            border-bottom-right-radius: 8px;
-            box-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
-        }
-
-        .cardHeadline {
-            position: relative;
-            text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
-            text-align: left;
-        }
-
-        .cards {
+            max-width: 1000px;
+            min-height: 40px;
+            background: #dfdfdf;
+            display: -ms-grid;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 5px;            
-            
+            -ms-flex-line-pack: center;
+            align-content: center;
+            margin: 10px auto;
+            overflow: hidden;
         }
 
-        .card_container {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .card {
-            padding: 5px;
-            transition: .5s;
-            height: 110px;
-        }
-
-            .card:hover {
-                transform: scale(1.2);
-                z-index: 5;
-                position: relative;
+            .scroller-container marquee a {
+                text-decoration: none;
+                color: #ff6363;
             }
 
-
-        /* Side Content */
-        .rightSidebar {
-            display: grid;
-            grid-template-rows: max-content max-content auto;
-            grid-gap: 10px;
-            padding: 10px;
-            background-color: rgb(255, 255, 255);
-        }
-
-        .video {
-            border: 1px solid rgba(0, 0, 0, .1);
-            border-radius: 3px;
-        }
-
-        .scrollerContainer {
-            position: relative;
-            overflow-x: hidden;
-            overflow-y: hidden;
-            height: 30px;
-        }
-
-        .scroll {
-            height: 30px;
-            background-color: #fff;
-           
-            overflow-x: hidden;
-            overflow-y: hidden;
-        }
-
-            .scroll > p {
-                margin: 0px;
-                padding: 5px 0px;
-                white-space: nowrap;
-                transform: translateX(180px);
-                animation: scrolFromRight 60s linear infinite;
+            .scroller-container marquee:hover {
+                -webkit-animation: pause;
+                animation: pause;
             }
 
-                .scroll > p > a {
-                    text-decoration: none;
-                    color: red;
-                }
+        .top-news {
+            max-width: 1000px;
+            margin: 20px auto;
+        }
 
-                .scroll > p:hover {
-                    animation-play-state: paused;
-                }
+            .top-news article {
+                display: -ms-grid;
+                display: grid;
+                -ms-grid-columns: 50% auto;
+                grid-template-columns: 50% auto;
+                grid-gap: 10px;
+            }
 
-        @keyframes scrolFromRight {
-            100% {
-                transform: translateX(-100%)
+        @media (max-width: 700px) {
+            .top-news article {
+                -ms-grid-columns: auto;
+                grid-template-columns: auto;
             }
         }
 
-        .advertisement {
-            text-align: center;
+        .top-news article .top-news-image {
+            overflow: hidden;
         }
 
-            .advertisement > p {
-                padding: 0;
-                margin: 0;
-                font-weight: bold;
-            }
-
-        .ad {
-            height: 10em;
-            border: 1px solid rgba(0, 0, 0, .1);
-        }
-
-        .other > div > p {
-            margin: 0;
-        }
-
-        .callender {
-            height: 80px;
-            display: grid;
-            grid-template-columns: 25% 75%;
-            grid-template-rows: 50% 50%;
-            border: 1px solid rgba(0, 0, 0, .1);
-            cursor: pointer;
-        }
-
-        .date {
-            margin: auto 0px auto auto;
-            font-size: 50px;
-            font-weight: bold;
-            grid-row: span 2;
-            color: red;
-        }
-
-        .event {
-            font-weight: bold;
-            margin: auto auto 0px 0px;
-        }
-
-
-        .rashifal > ul {
-            list-style: none;
-            padding: 0;
-            display: none;
-        }
-
-        .rashifal > p {
-            text-align: center;
-            padding-top: 10px;
-        }
-
-        .rashifal > ul > li {
-            height: 40px;
-            vertical-align: middle;
-            margin-bottom: 4px;
-            border: 1px solid rgba(0, 0, 0, .1);
-            cursor: pointer;
-        }
-
-            .rashifal > ul > li > p {
-                margin: 10px auto auto 12px;
-                vertical-align: middle;
-            }
-
-        .zodiac {
-            position: relative;
-        }
-
-            .zodiac .tooltipText {
-                visibility: hidden;
+            .top-news article .top-news-image img {
                 width: 100%;
-                background-color: black;
-                color: #fff;
-                text-align: left;
-                border-radius: 6px;
-                padding: 5px;
-                /* Position the tooltip */
+            }
+
+        .top-news article .info {
+            position: relative;
+        }
+
+            .top-news article .info h1 {
+                font-size: 2em;
+                margin: 0;
+            }
+
+            .top-news article .info p {
+                font-size: .8em;
+                opacity: .7;
+                padding: 1px;
+                margin: 5px;
+            }
+
+                .top-news article .info p.main-content {
+                    font-size: 1em;
+                    max-height:300px;
+                    overflow:hidden;
+                    opacity: 1;
+                    text-align: justify;
+                }
+
+            .top-news article .info .button-container {
                 position: absolute;
-                z-index: 1;
-            }
-
-            .zodiac:hover .tooltipText {
-                visibility: visible;
-            }
-
-        .tooltipText:active .tooltipText {
-            visibility: hidden;
-        }
-
-        .watch {
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        @media (max-width:1000px) {
-            .main-container {
-                grid-template-columns: 25% 48% 25%;
-            }
-
-            .cards {
+                height: 50px;
+                display: -ms-grid;
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
+                -ms-flex-line-pack: center;
+                align-content: center;
+                text-align: right;
+                bottom: 0;
+                width: 100%;
+                background: -webkit-gradient(linear, left top, right top, from(transparent), to(#fff));
+                background: linear-gradient(to right, transparent, #fff);
+            }
+
+        .sub-news-section {
+            max-width: 1000px;
+            margin: 0 auto 10px auto;
+        }
+
+            .sub-news-section .lable {
+                width: 100px;
+            }
+
+            .sub-news-section .subnews-container {
+                margin: 10px auto;
+                display: -ms-grid;
+                display: grid;
+                -ms-grid-columns: auto auto auto;
+                grid-template-columns: auto auto auto;
+                grid-gap: 20px;
+            }
+
+        @media (max-width: 700px) {
+            .sub-news-section .subnews-container {
+                -ms-grid-columns: auto;
+                grid-template-columns: auto;
+            }
+        }
+
+        .sub-news-section .subnews-container .subnews .subnews-image {
+            position: relative;
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+
+            .sub-news-section .subnews-container .subnews .subnews-image img {
+                width: 100%;
+            }
+
+            .sub-news-section .subnews-container .subnews .subnews-image .info {
+                position: absolute;
+                bottom: 7px;
+                padding: 10px;
+                color: #fff;
+                background: rgba(0, 0, 0, 0.5);
+            }
+
+                .sub-news-section .subnews-container .subnews .subnews-image .info p {
+                    padding: 0;
+                    margin: 0;
+                    font-size: .8em;
+                }
+
+        .sub-news-section .subnews-container .subnews .subnews-info {
+            padding: 10px;
+        }
+
+            .sub-news-section .subnews-container .subnews .subnews-info h1 {
+                font-size: 1em;
+                margin: 2px;
+            }
+
+        .more-links {
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+
+            .more-links .lable {
+                width: -webkit-fit-content;
+                width: -moz-fit-content;
+                width: fit-content;
+            }
+
+        .more-links-container {
+            display: -ms-grid;
+            display: grid;
+            -ms-grid-columns: auto auto;
+            grid-template-columns: auto auto;
+            grid-gap: 20px;
+        }
+
+        @media (max-width: 700px) {
+            .more-links-container {
+                -ms-grid-columns: auto;
+                grid-template-columns: auto;
+            }
+        }
+
+        .morelinks {
+            padding: 30px;
+        }
+
+            .morelinks a {
+                display: block;
+                margin-bottom: 1em;
+            }
+
+        .extra {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+            .extra .lable {
+                width: 120px;
+            }
+
+            .extra .extra-items {
+                display: -ms-grid;
+                display: grid;
+                -ms-grid-rows: auto auto auto;
+                grid-template-rows: auto auto auto;
                 grid-gap: 5px;
             }
+
+                .extra .extra-items .share-buttons {
+                    display: -ms-grid;
+                    display: grid;
+                    -ms-grid-columns: auto auto auto auto;
+                    grid-template-columns: auto auto auto auto;
+                    text-align: center;
+                    -ms-flex-line-pack: center;
+                    align-content: center;
+                    -webkit-box-align: center;
+                    -ms-flex-align: center;
+                    align-items: center;
+                }
+
+                .extra .extra-items .share {
+                    width: 80px;
+                    height: -webkit-fit-content;
+                    height: -moz-fit-content;
+                    height: fit-content;
+                }
+
+                .extra .extra-items .share-button {
+                    height: 30px;
+                    width: 30px;
+                    background: #181818;
+                    border-radius: 50%;
+                    color: #fff;
+                    display: -ms-grid;
+                    display: grid;
+                    text-align: center;
+                    -ms-flex-line-pack: center;
+                    align-content: center;
+                    cursor: pointer;
+                }
+
+                .extra .extra-items .date {
+                    display: -ms-grid;
+                    display: grid;
+                    text-align: center;
+                    -ms-flex-line-pack: center;
+                    align-content: center;
+                    color: #ff6363;
+                }
+
+                    .extra .extra-items .date iframe {
+                        margin: auto;
+                    }
+
+                .extra .extra-items .rashifal {
+                    min-height: 80px;
+                    display: -ms-grid;
+                    display: grid;
+                    text-align: center;
+                    -ms-flex-line-pack: center;
+                    align-content: center;
+                    background: #ff6363;
+                    color: #fff;
+                    font-weight: bold;
+                }
+
+            .extra .extra-container {
+                display: -ms-grid;
+                display: grid;
+                -ms-grid-columns: auto auto auto;
+                grid-template-columns: auto auto auto;
+            }
+
+        @media (max-width: 700px) {
+            .extra .extra-container {
+                -ms-grid-columns: auto;
+                grid-template-columns: auto;
+            }
         }
 
-        @media (max-width:750px) {
-            .main-container {
-                margin: 70px auto 30px auto;
-                display: grid;
-                grid-template-columns: 99%;
-            }
+        .extra .facebook-page {
+            margin: auto;
+        }
 
+        .blue-button {
+            padding: 10px;
+            width: 100px;
+            border: none;
+            background: #000ba5;
+            color: #fff;
+        }
 
+        .absolute-right {
+            position: absolute;
+            right: 10px;
+            z-index: 1;
+        }
 
-            .leftSidebar {
-                text-align: center;
-            }
-
-                .leftSidebar > ul {
-                    display: none;
-                }
-
-                .leftSidebar > .flag_image {
-                    width: 30vw;
-                }
-
-                .leftSidebar > p.flag_text {
-                    top: unset;
-                    bottom: 0px;
-                    margin: 0 !important;
-                }
-
-                .leftSidebar > .catHead {
-                    display: none;
-                }
-
-            .cards {
-                display: grid;
-                grid-template-columns: repeat(1, 1fr);
-                grid-gap: 5px;
-            }
-
-            .card {
-                height: 200px;
-                background-size: cover !important;
-                z-index: 5;
-            }
-
-                .card:hover {
-                    transform: none;
-                }
-
-            .catSpan {
-                font-size: 14px;
-            }
-
-            .watch {
-                margin-bottom: 50px;
-            }
-
-            .videoFrame > iframe {
-                height: 300px;
-            }
+        .absolute-left {
+            position: absolute;
+            left: 0;
+            z-index: 1;
         }
     </style>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <main>
+    <main>
         <div class="scroller-container">
             <div class="lable absolute-left">
                 Headlines
@@ -365,14 +335,8 @@
                         <p runat="server" id="topCategory">International</p>
                         <p runat="server" id="topDate">09<sup>th</sup>Semtember 2019</p>
 
-                        <p class="main-content" runat="server" id="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos illum
-                            dolorem nesciunt! Voluptas quis fugiat natus at. Totam, ut. Dolorem aut non excepturi et
-                            dolore? Ipsum consequuntur deleniti nihil non?Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit. Temporibus, esse. Tenetur repellendus et dolorum facilis qui, optio eaque
-                            aut repudiandae voluptatem dolorem accusantium, ducimus at iste minima similique, enim
-                            velit! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum hic, neque impedit
-                            doloremque aliquid provident amet magni, tenetur quod harum veniam vel soluta velit iste
-                            ipsa aliquam reiciendis ratione beatae!
+                        <p class="main-content" runat="server" id="para">
+                            
                         </p>
                         <div class="button-container">
                             <button class="blue-button absolute-right" runat="server" id="btntop">Read More</button>
@@ -386,132 +350,8 @@
             <div class="lable">
                 Latest News
             </div>
-            <div class="subnews-container">
-                <article class="subnews">
-                    <div class="subnews-image">
-                        <img src="https://source.unsplash.com/user/erondu" alt="">
-                        <div class="info">
-                            <p>International</p>
-                            <p>09<sup>th</sup>Semtember 2019</p>
-                        </div>
-                    </div>
-                    <div class="subnews-info">
-                        <h1>Leorem Ipsum Headline</h1>
-                        <button class="blue-button">Read More</button>
-                    </div>
-                </article>
-                <article class="subnews">
-                    <div class="subnews-image">
-                        <img src="https://source.unsplash.com/user/erondu" alt="">
-                        <div class="info">
-                            <p>International</p>
-                            <p>09<sup>th</sup>Semtember 2019</p>
-                        </div>
-
-                    </div>
-                    <div class="subnews-info">
-                        <h1>Leorem Ipsum Headline</h1>
-                        <button class="blue-button">Read More</button>
-                    </div>
-                </article>
-                <article class="subnews">
-                    <div class="subnews-image">
-                        <img src="https://source.unsplash.com/user/erondu" alt="">
-                        <div class="info">
-                            <p>International</p>
-                            <p>09<sup>th</sup>Semtember 2019</p>
-                        </div>
-
-                    </div>
-                    <div class="subnews-info">
-                        <h1>Leorem Ipsum Headline</h1>
-                        <button class="blue-button">Read More</button>
-                    </div>
-                </article>
-                <article class="subnews">
-                    <div class="subnews-image">
-                        <img src="https://source.unsplash.com/user/erondu" alt="">
-                        <div class="info">
-                            <p>International</p>
-                            <p>09<sup>th</sup>Semtember 2019</p>
-                        </div>
-
-                    </div>
-                    <div class="subnews-info">
-                        <h1>Leorem Ipsum Headline</h1>
-                        <button class="blue-button">Read More</button>
-                    </div>
-                </article>
-                <article class="subnews">
-                    <div class="subnews-image">
-                        <img src="https://source.unsplash.com/user/erondu" alt="">
-                        <div class="info">
-                            <p>International</p>
-                            <p>09<sup>th</sup>Semtember 2019</p>
-                        </div>
-
-                    </div>
-                    <div class="subnews-info">
-                        <h1>Leorem Ipsum Headline</h1>
-                        <button class="blue-button">Read More</button>
-                    </div>
-                </article>
-                <article class="subnews">
-                    <div class="subnews-image">
-                        <img src="https://source.unsplash.com/user/erondu" alt="">
-                        <div class="info">
-                            <p>International</p>
-                            <p>09<sup>th</sup>Semtember 2019</p>
-                        </div>
-
-                    </div>
-                    <div class="subnews-info">
-                        <h1>Leorem Ipsum Headline</h1>
-                        <button class="blue-button">Read More</button>
-                    </div>
-                </article>
-                <article class="subnews">
-                    <div class="subnews-image">
-                        <img src="https://source.unsplash.com/user/erondu" alt="">
-                        <div class="info">
-                            <p>International</p>
-                            <p>09<sup>th</sup>Semtember 2019</p>
-                        </div>
-
-                    </div>
-                    <div class="subnews-info">
-                        <h1>Leorem Ipsum Headline</h1>
-                        <button class="blue-button">Read More</button>
-                    </div>
-                </article>
-                <article class="subnews">
-                    <div class="subnews-image">
-                        <img src="https://source.unsplash.com/user/erondu" alt="">
-                        <div class="info">
-                            <p>International</p>
-                            <p>09<sup>th</sup>Semtember 2019</p>
-                        </div>
-
-                    </div>
-                    <div class="subnews-info">
-                        <h1>Leorem Ipsum Headline</h1>
-                        <button class="blue-button">Read More</button>
-                    </div>
-                </article>
-                <article class="subnews">
-                    <div class="subnews-image">
-                        <img src="https://source.unsplash.com/user/erondu" alt="">
-                        <div class="info">
-                            <p>International</p>
-                            <p>09<sup>th</sup>Semtember 2019</p>
-                        </div>
-
-                    </div>
-                    <div class="subnews-info">
-                        <h1>Leorem Ipsum Headline</h1>
-                        <button class="blue-button">Read More</button>
-                    </div>
-                </article>
+            <div class="subnews-container" runat="server" id="subnews_container">
+                
             </div>
         </section>
 
@@ -529,7 +369,7 @@
                     <div id="fb-root"></div>
                     <script async defer crossorigin="anonymous"
                         src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v4.0"></script>
-                        <div class="fb-comments" data-href="https://www.jagratbharatnews.in/" data-width="100%" data-numposts="10"></div>
+                    <div class="fb-comments" data-href="https://www.jagratbharatnews.in/" data-width="100%" data-numposts="10"></div>
                 </div>
             </div>
 
@@ -540,7 +380,7 @@
             </div>
             <div class="extra-container">
                 <div class="nationnal-flag">
-                    <img src="img/flag.gif" alt="">
+                    <img src="Defaults/flag.gif" alt="">
                 </div>
                 <div class="extra-items">
                     <div class="share-buttons">
@@ -552,7 +392,7 @@
                     <div class="date">
                         <iframe
                             src="http://free.timeanddate.com/clock/i6xksqdw/n1690/fn11/fs20/fcff4271/tct/pct/tt0/tw0/tm1/tb1"
-                            frameborder="0" width="209" height="26" allowTransparency="true"></iframe>
+                            frameborder="0" width="209" height="26" allowtransparency="true"></iframe>
 
 
                     </div>
@@ -564,8 +404,8 @@
                 <div class="facebook-page">
                     <iframe
                         src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FJagratBharatNews.in%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
-                        width="340" height="380" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-                        allowTransparency="true" allow="encrypted-media"></iframe>
+                        width="340" height="380" style="border: none; overflow: hidden" scrolling="no" frameborder="0"
+                        allowtransparency="true" allow="encrypted-media"></iframe>
                 </div>
             </div>
         </section>

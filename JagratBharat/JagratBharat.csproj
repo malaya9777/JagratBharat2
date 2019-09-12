@@ -62,6 +62,7 @@
     <Content Include="Defaults\1.png" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="getImage.ashx" />
+    <Content Include="lazyload.js" />
     <Content Include="Main.Master" />
     <Content Include="db.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>

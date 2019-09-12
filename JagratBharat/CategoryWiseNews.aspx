@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-        .container {
+        .main-container {
             margin: 80px auto;
             max-width: 1200px;
         }
@@ -35,7 +35,7 @@
                     text-align: justify;
                 }
 
-        .container > h3 {
+        .main-container > h3 {
             text-align: center;
             padding: 8px;
             background-color: #000000;
@@ -45,7 +45,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+    <div class="main-container">
         <h3 id="heading" runat="server">Heading</h3>
         <div class="mainContent" id="mainContent" runat="server">
         </div>

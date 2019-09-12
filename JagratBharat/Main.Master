@@ -22,7 +22,7 @@
             padding: 0;
             margin: 0;
             font-family: 'Manjari', sans-serif;
-            background:#f8f8f8;
+            background: #f8f8f8;
         }
 
         .container {
@@ -70,9 +70,10 @@
                 font-size: 20px !important;
             }
 
-            .header-top{
-                background:#f8f8f8;
-            }
+        .header-top {
+            background: #f8f8f8;
+        }
+
         .header-top-container .logo {
             width: 100%;
             text-align: center;
@@ -81,12 +82,12 @@
             .header-top-container .logo img {
                 padding: 10px 0;
                 margin: 0 auto;
-                width:200px;
+                width: 200px;
             }
 
         .header-bottom {
             border: solid 1px rgba(131, 131, 131, 0.13);
-            background:#f8f8f8;
+            background: #f8f8f8;
         }
 
             .header-bottom .header-bottom-container img {
@@ -144,22 +145,42 @@
                             color: #ff6363;
                         }
 
-                        .more_category{
-                            display:none;
-                            height:200px;
-                            width:800px;
-                            background:#f8f8f8;
-                            position:absolute;
-                            
-                            z-index:11;
-                        }
-                       
-                        
+
+        .more_category {
+            display: none;
+            min-height: 200px;
+            width: 800px;
+            background: #6d6d6d;
+            position: absolute;
+            color:#fff;
+            z-index: 11;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.39);
+        }
+        .closeMoreCategory{
+            float:right;
+            padding:10px;   
+            cursor:pointer;
+            
+        }
+        .moreCategory-Container{
+            width:100%;
+            padding:10px;
+            columns:4;
+            column-rule-color:#f8f8f8;
+            column-gap:20px;
+        }
+        .moreCategory-Container a{
+            text-decoration:none;
+            color:#fff;
+            display:block;
+        }
+
+
 
         .sticky-position {
             position: fixed;
             top: 0;
-            width: 100%;            
+            width: 100%;
             z-index: 3;
         }
 
@@ -284,7 +305,7 @@
                 position: absolute;
                 top: 30px;
                 right: 30px;
-                color:#fff;
+                color: #fff;
             }
 
         .search-box-container {
@@ -308,6 +329,8 @@
                 color: #fff;
                 cursor: pointer;
             }
+
+       
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
@@ -347,12 +370,16 @@
                 </span>
                 <nav>
                     <ul id="category_list" runat="server">
-
                     </ul>
                     <div class="more_category">
-
+                        <div class="closeMoreCategory">
+                            <i class="fa fa-close" id="closeCategory"></i>
+                        </div>
+                        <div class="moreCategory-Container" id="moreCategoryContainer" runat="server">
+                        <%-- Auto Generated Code --%>
+                        </div>
                     </div>
-                    
+
                 </nav>
                 <img src="Defaults/1.png" alt="Jagrat Bharat News Logo">
                 <span class="search float-right" id="search">
@@ -364,10 +391,10 @@
     </header>
     <%-- Main Body --%>
     <form id="form1" runat="server">
-       
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-       
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+
     </form>
     <footer>
         <div class="footer-info container">
@@ -401,7 +428,7 @@
             </ul>
         </div>
     </div>
-    <div class="search-box"  id="search-box">
+    <div class="search-box" id="search-box">
         <i class="fa fa-close" id="search_close"></i>
         <div class="search-box-container">
             <input type="text" class="textInput" id="searchText" placeholder="Search" />
@@ -451,17 +478,29 @@
         let search = document.getElementById('search');
         let search_close = document.getElementById('search_close');
         let search_box = document.getElementById('search-box');
-        
+
         search.addEventListener('click', function () {
             search_box.style.display = 'grid';
-            
-            
+
+
         });
         search_close.addEventListener('click', function () {
             search_box.style.display = 'none';
         });
 
-        
+        //
+        let moreCetegory = document.getElementById('moreCategory');
+        let moreCategoryClose = document.getElementById('closeCategory');
+        let moreCategoryDiv = document.querySelector('.more_category');
+        moreCetegory.addEventListener('click', function () {
+            
+            moreCategoryDiv.style.display = "block";
+        });
+        moreCategoryClose.addEventListener('click', function () {
+            moreCategoryDiv.style.display = 'none';
+        });
+
+
     </script>
     <script src="lazyload.js"></script>
 

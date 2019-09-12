@@ -2,40 +2,49 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-        .main-container {
-            margin: 80px auto;
-            max-width: 1200px;
+        .main_container {
+            position: relative;
+            margin: 10px auto;
+            max-width: 1000px;
         }
 
-        .mainContent {
+        .main-Content {
             display: grid;
             width: 100%;
             background-color: #fff;
             padding: 5px;
-            grid-template-columns: 30% 30% 30%;
+            grid-template-columns: auto auto auto;
             grid-gap: 5%;
         }
 
-            .mainContent > .card {
-                min-width: 200px;
-                background-color: black;
-                margin: 0px 10px 0px 0px;
-                cursor: pointer;
+        @media (max-width:700px) {
+            .main-Content {
+                grid-template-columns: auto;
+                grid-gap:10px;
+            }
+        }
+
+        .main-Content > .card {
+            min-width: 200px;
+            background-color: black;
+            margin: 0px 10px 0px 0px;
+            cursor: pointer;
+        }
+
+            .main-Content > .card > img {
+                width: 90%;
+                padding: 5%;
             }
 
-                .mainContent > .card > img {
-                    width: 90%;
-                    padding: 5%;
-                }
+            .main-Content > .card > h5 {
+                margin: unset;
+                color: #fff;
+                padding: 0px 5px 10px 5px;
+                text-align: justify;
+                font-size:1em;
+            }
 
-                .mainContent > .card > h5 {
-                    margin: unset;
-                    color: #fff;
-                    padding: 0px 5px 10px 5px;
-                    text-align: justify;
-                }
-
-        .main-container > h3 {
+        .main_container > h3 {
             text-align: center;
             padding: 8px;
             background-color: #000000;
@@ -45,14 +54,16 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="main-container">
-        <h3 id="heading" runat="server">Heading</h3>
-        <div class="mainContent" id="mainContent" runat="server">
+    <main>
+        <div class="main_container">
+            <h3 id="heading" runat="server">Heading</h3>
+            <div class="main-Content" id="mainContent" runat="server"></div>
         </div>
-    </div>
+    </main>
+
     <script>
         function redirect(path) {
             window.location = path;
-        }
+        };
     </script>
 </asp:Content>

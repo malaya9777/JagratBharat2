@@ -119,7 +119,7 @@ namespace JagratBharat
         private void loadImageFromPath(string imagePath)
         {
             heading.Style.Add("background", "linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.6)),border-box,url(" + imagePath + "), no-repeat, center");
-            heading.Style.Add(" background-size", "cover");
+            heading.Style.Add(" background-size", "100%");
         }
     }
 }

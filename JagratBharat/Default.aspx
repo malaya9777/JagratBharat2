@@ -190,6 +190,8 @@
 
         .morelinks {
             padding: 30px;
+            max-height:300px;
+            overflow-y:scroll;
         }
 
             .morelinks a {
@@ -246,7 +248,9 @@
                     -ms-flex-line-pack: center;
                     align-content: center;
                     cursor: pointer;
+                    text-decoration:none;
                 }
+                 
 
                 .extra .extra-items .date {
                     display: -ms-grid;
@@ -358,12 +362,8 @@
         <section class="more-links">
             <div class="lable">More links</div>
             <div class="more-links-container">
-                <div class="morelinks">
-                    <a href="#">More liks to new afasdfdsaf news..</a>
-                    <a href="#">More liks to new asdfsadfdsa news..</a>
-                    <a href="#">More liks to newasdfasf asdfsaf asfsadfwrewrdfsgdsaf news..</a>
-                    <a href="#">More liks to new asdf cvzxcv agag news..</a>
-                    <a href="#">More liks to new asdfsad dfsagdsf werew fgsdf news..</a>
+                <div class="morelinks" id="moreLinks" runat="server">
+                    
                 </div>
                 <div class="facebook-comment">
                     <div id="fb-root"></div>
@@ -385,13 +385,13 @@
                 <div class="extra-items">
                     <div class="share-buttons">
                         <div class="lable share">Share On</div>
-                        <div class="share-button"><i class="fa fa-facebook"></i></div>
-                        <div class="share-button"><i class="fa fa-twitter"></i></div>
-                        <div class="share-button"><i class="fa fa-whatsapp"></i></div>
+                        <a class="share-button" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjagratbharatnews.in%2F&amp;src=sdkpreparse"><i class="fa fa-facebook"></i></a>
+                        <a class="share-button" href="https://twitter.com/intent/tweet?text=Jagrat+Bharat+News https://www.jagratbharatnews.in"><i class="fa fa-twitter"></i></a>
+                        <a class="share-button" href="whatsapp://send?text=Jagrat+Bharat+News https://www.jagratbharatnews.in"><i class="fa fa-whatsapp"></i></a>
                     </div>
                     <div class="date">
                         <iframe
-                            src="http://free.timeanddate.com/clock/i6xksqdw/n1690/fn11/fs20/fcff4271/tct/pct/tt0/tw0/tm1/tb1"
+                            src="https://free.timeanddate.com/clock/i6xksqdw/n1690/fn11/fs20/fcff4271/tct/pct/tt0/tw0/tm1/tb1"
                             frameborder="0" width="209" height="26" allowtransparency="true"></iframe>
 
 

@@ -145,12 +145,16 @@
                         }
 
                         .more_category{
+                            display:none;
                             height:200px;
                             width:800px;
                             background:#f8f8f8;
                             position:absolute;
+                            
                             z-index:11;
                         }
+                       
+                        
 
         .sticky-position {
             position: fixed;
@@ -345,6 +349,9 @@
                     <ul id="category_list" runat="server">
 
                     </ul>
+                    <div class="more_category">
+
+                    </div>
                     
                 </nav>
                 <img src="Defaults/1.png" alt="Jagrat Bharat News Logo">
@@ -357,10 +364,10 @@
     </header>
     <%-- Main Body --%>
     <form id="form1" runat="server">
-        <main>
+       
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
-        </main>
+       
     </form>
     <footer>
         <div class="footer-info container">

@@ -23,11 +23,23 @@ namespace JagratBharat
                     loadScroller(posts);                   
                     loadTopDiv(posts.OrderByDescending(n=>n.Id).FirstOrDefault());
                     loadSubNews(posts);
+                    loadMoreLinks(posts);
                    
                 }
 
             }
 
+        }
+
+        private void loadMoreLinks(List<Post> posts)
+        {
+            var extraPosts = posts.OrderByDescending(n => n.Id).Skip(37);
+            var linkString = "";
+            foreach(var p in extraPosts)
+            {
+                linkString += "<a href=\"News.aspx?ID=" + globalMethods.EncodeID(p.Id) + "\">" + p.HeadLine + "</a>";
+            }
+            moreLinks.InnerHtml = linkString;
         }
 
         private void loadSubNews(List<Post> posts)
@@ -60,7 +72,7 @@ namespace JagratBharat
                 topHeadline.InnerText = post.HeadLine;
                 topCategory.InnerText = categories.Where(n => n.Id == post.Category).Select(n => n.Name).FirstOrDefault();
                 topDate.InnerText = Convert.ToDateTime(post.NewsDate).ToString("dd MMMM yyyy");
-                btntop.Attributes["onclick"] = "window.location='News.aspx?ID=" + globalMethods.EncodeID(post.Id) + "'";
+                btntop.Attributes["onclick"] = "window.open('News.aspx?ID=" + globalMethods.EncodeID(post.Id) + "')";
                 var paragraph = "";
                 foreach (var p in db.Post_Paragraphs.Where(n=>n.PostID == post.Id).Take(3))
                 {

@@ -28,7 +28,7 @@ namespace JagratBharat
             {
                 listElement += "<li><a href='CategoryWiseNews.aspx?categoryID=" + globalMethods.EncodeID(i.Id) + "'>" + i.Name + " </a></li>";
             }
-            listElement+= "<li><a href='#'>More <i class=\"fa fa-sort-down\"></i></a></li>";
+            listElement+= "<li><a href='#' class='moreCategory'>More <i class=\"fa fa-sort-down\"></i></a></li>";
             category_list.InnerHtml = listElement;
 
         }

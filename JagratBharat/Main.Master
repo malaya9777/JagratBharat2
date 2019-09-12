@@ -144,11 +144,18 @@
                             color: #ff6363;
                         }
 
+                        .more_category{
+                            height:200px;
+                            width:800px;
+                            background:#f8f8f8;
+                            position:absolute;
+                            z-index:11;
+                        }
+
         .sticky-position {
             position: fixed;
             top: 0;
-            width: 100%;
-            
+            width: 100%;            
             z-index: 3;
         }
 
@@ -336,7 +343,9 @@
                 </span>
                 <nav>
                     <ul id="category_list" runat="server">
+
                     </ul>
+                    
                 </nav>
                 <img src="Defaults/1.png" alt="Jagrat Bharat News Logo">
                 <span class="search float-right" id="search">
@@ -438,6 +447,7 @@
         
         search.addEventListener('click', function () {
             search_box.style.display = 'grid';
+            
             
         });
         search_close.addEventListener('click', function () {

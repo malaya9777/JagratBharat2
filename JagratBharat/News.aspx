@@ -18,37 +18,26 @@
         .header {
             position: relative;
             text-align: center;
-            height: 500px;
         }
 
         .PostHeader {
             color: rgba(255,255,255,.8);
+            background: rgba(0,0,0,.5);
             position: absolute;
-            bottom: 20px;
-            left: 20px;
+            bottom: 0;
+            padding: 10px;
             text-align: left;
-            padding: 0px 10px 0px 0px;
         }
 
         .cat {
-            margin-top: 15px;
-            height: 40px;
-            width: 200px;
-            margin-left: 10px;
-            background-color: red;
         }
 
         .categoryInner {
-            text-align: center;
-            padding-top: 5%;
-            color: rgb(255,255,255);
+            color: rgb(128, 128, 128);
         }
 
         .infoDetails {
-            margin-top: 10px;
-            margin-left: 10px;
-            text-align: left;
-            color: rgb(0,0,0);
+            color: rgb(128, 128, 128);
         }
 
         h5.relatedNews {
@@ -58,10 +47,8 @@
         }
 
         .catSpan {
-            position: relative;
-            padding: 5px;
-            background-color: red;
-            float: left;
+            position: absolute;
+            bottom: 0;
             display: block;
             color: white;
             top: 15px;
@@ -73,38 +60,71 @@
             background: #fff;
         }
 
-        .cardHeadline {
-            text-align: left;
+        .sub-news-section {
+            max-width: 1000px;
+            margin: 0 auto 10px auto;
         }
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 5px;
-            padding: 10px;
-            background-color: rgba(0,0,0,.1);
+            .sub-news-section .lable {
+                width: 100px;
+            }
+
+            .sub-news-section .subnews-container {
+                margin: 10px auto;
+                display: -ms-grid;
+                display: grid;
+                -ms-grid-columns: auto auto auto;
+                grid-template-columns: auto auto auto;
+                grid-gap: 20px;
+            }
+
+        @media (max-width: 700px) {
+            .sub-news-section .subnews-container {
+                -ms-grid-columns: auto;
+                grid-template-columns: auto;
+            }
         }
 
-        .card {
-            background-color: rgba(255, 255, 255, 1);
-            border: 1px solid rgba(0, 0, 0, .1);
-            padding: 5px;
-            border-radius: 5px;
+        .sub-news-section .subnews-container .subnews .subnews-image {
+            position: relative;
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
         }
 
-            .card > img {
+            .sub-news-section .subnews-container .subnews .subnews-image img {
                 width: 100%;
             }
 
-            .card > h4 {
-                text-align: left;
-                text-indent: 10px;
+            .sub-news-section .subnews-container .subnews .subnews-image .info {
+                position: absolute;
+                bottom: 7px;
+                padding: 10px;
+                color: #fff;
+                background: rgba(0, 0, 0, 0.5);
             }
 
-            .card > p {
-                padding: 5px;
-                text-align: justify;
+                .sub-news-section .subnews-container .subnews .subnews-image .info p {
+                    padding: 0;
+                    margin: 0;
+                    font-size: .8em;
+                }
+
+        .sub-news-section .subnews-container .subnews .subnews-info {
+            padding: 10px;
+        }
+
+            .sub-news-section .subnews-container .subnews .subnews-info h1 {
+                font-size: 1em;
+                margin: 2px;
             }
+
+        .blue-button {
+            padding: 10px;
+            width: 100px;
+            border: none;
+            background: #000ba5;
+            color: #fff;
+        }
 
         .shareButtons {
             display: inline-flex;
@@ -145,9 +165,6 @@
 
         @media(max-width:700px) {
             .header {
-                position: relative;
-                text-align: center;
-                height: 200px;
             }
 
             .cards {
@@ -161,6 +178,19 @@
                 left: 5px;
                 text-align: left;
             }
+
+            
+            
+        }
+        .headImage {
+                width: 100%;
+            }
+        .lable {
+            border: solid 1px #ff6363;
+            padding: 10px;
+            background: #fff;
+            color: #ff6363;
+            width:fit-content;
         }
     </style>
     <meta property="og:site_name" runat="server" id="og_site_name" />
@@ -176,6 +206,7 @@
         <main>
             <article>
                 <div id="heading" runat="server" class="header">
+                    <img src="" alt="" class="headImage" runat="server" id="headImage" />
                     <h2 id="PostHeader" class="PostHeader" runat="server"></h2>
                 </div>
                 <div id="ads1" runat="server"></div>
@@ -201,12 +232,12 @@
                     <a class="whatsaap" id="A1" runat="server" href="whatsaap://send?text=" data-action="share/whatsapp/share"><i class="fa fa-whatsapp"></i>Share</a>
                     <a class="twitter" id="A2" runat="server" href="https://twitter.com/intent/tweet?text=" data-size="large"><i class="fa fa-twitter"></i>Tweet</a>
                 </div>
-                <h5 class="relatedNews">Related News</h5>
-
-                <div id="RelatedNews" class="cards" runat="server">
-                </div>
-                <div id="ads" runat="server"></div>
-
+                <p class="lable">Related News</p>
+                <section class="sub-news-section">
+                    <div class="subnews-container" runat="server" id="subnews_container">
+                    </div>
+                    <div id="ads" runat="server"></div>
+                </section>
             </article>
         </main>
     </div>

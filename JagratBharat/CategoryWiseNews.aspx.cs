@@ -30,20 +30,22 @@ namespace JagratBharat
 
         private void loadCards(int catID)
         {
-           using(dbDataContext db = new dbDataContext())
+            using (dbDataContext db = new dbDataContext())
             {
-                var posts = db.Posts.Where(n => n.Category == catID && n.Submitted == true).OrderByDescending(n => n.NewsDate).Take(18);
+                var posts = db.Posts.Where(n => n.Category == catID && n.Submitted == true).OrderByDescending(n => n.NewsDate);
                 var cards = "";
-                foreach(var p in posts)
+                foreach (var c in posts)
                 {
-                    cards+= "<div class='card' onclick='redirect(\"News.aspx?ID=" + globalMethods.EncodeID(p.Id) + "\");'>" +
-                            "<img src='getImage.ashx?PostID=" + p.Id + "&Size=thumbnail' alt=''/>" +
-                            "<h5>" + globalMethods.Truncate(p.HeadLine, 30) + "</h5>" +
-                            "</div>";
+                    cards += "<article class=\"subnews\"><div class=\"subnews-image\">" +
+                                "<img data-src=\"getImage.ashx?PostID=" + c.Id + "&Size=thumbnail\" alt =\"" + c.HeadLine + "\" style='min-height:300px;'>" +
+                                 "<div class=\"info\"> <p>" + db.Post_Categories.Where(n => n.Id == c.Category).Select(n => n.Name).FirstOrDefault() + "</p>" +
+                                    "<p>" + Convert.ToDateTime(c.NewsDate).ToString("dd MMMM yyyy") + "</p></div></div><div class=\"subnews-info\"><h1>" + c.HeadLine + "</h1>" +
+                                    "<button class=\"blue-button\" onclick='window.open(\"News.aspx?ID=" + globalMethods.EncodeID(c.Id) + "\")'>Read More</button></div></article>";
+
                 }
                 heading.InnerText = db.Post_Categories.Where(n => n.Id == catID).Select(n => n.Name).SingleOrDefault();
                 Page.Title = heading.InnerText + " | Jagrat Bharat News";
-                mainContent.InnerHtml = cards;
+                subnews_container.InnerHtml = cards;
             }
         }
     }

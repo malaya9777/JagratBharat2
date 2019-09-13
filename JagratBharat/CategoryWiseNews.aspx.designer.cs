@@ -22,12 +22,21 @@ namespace JagratBharat {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl heading;
         
         /// <summary>
-        /// mainContent control.
+        /// subnews_container control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mainContent;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl subnews_container;
+        
+        /// <summary>
+        /// ads control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ads;
     }
 }

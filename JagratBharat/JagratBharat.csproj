@@ -62,6 +62,7 @@
     <Content Include="Defaults\1.png" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="getImage.ashx" />
+    <Content Include="googled56ad9251e63e8df.html" />
     <Content Include="lazyload.js" />
     <Content Include="Main.Master" />
     <Content Include="db.dbml">

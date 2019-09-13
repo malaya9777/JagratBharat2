@@ -8,56 +8,90 @@
             max-width: 1000px;
         }
 
-        .main-Content {
-            display: grid;
-            width: 100%;
-            background-color: #fff;
-            padding: 5px;
-            grid-template-columns: auto auto auto;
-            grid-gap: 5%;
+        .lable {
+            border: solid 1px #ff6363;
+            padding: 10px;
+            background: #fff;
+            color: #ff6363;
         }
 
-        @media (max-width:700px) {
-            .main-Content {
-                grid-template-columns: auto;
-                grid-gap:10px;
-            }
-        }
-
-        .main-Content > .card {
-            min-width: 200px;
-            background-color: black;
-            margin: 0px 10px 0px 0px;
-            cursor: pointer;
-        }
-
-            .main-Content > .card > img {
-                width: 90%;
-                padding: 5%;
-            }
-
-            .main-Content > .card > h5 {
-                margin: unset;
-                color: #fff;
-                padding: 0px 5px 10px 5px;
-                text-align: justify;
-                font-size:1em;
-            }
-
-        .main_container > h3 {
-            text-align: center;
-            padding: 8px;
-            background-color: #000000;
+        .blue-button {
+            padding: 10px;
+            width: 100px;
+            border: none;
+            background: #000ba5;
             color: #fff;
         }
+
+        .sub-news-section {
+            max-width: 1000px;
+            margin: 0 auto 10px auto;
+        }
+
+            .sub-news-section .lable {
+                width: 100px;
+            }
+
+            .sub-news-section .subnews-container {
+                margin: 10px auto;
+                display: -ms-grid;
+                display: grid;
+                -ms-grid-columns: auto auto auto;
+                grid-template-columns: auto auto auto;
+                grid-gap: 20px;
+            }
+
+        @media (max-width: 700px) {
+            .sub-news-section .subnews-container {
+                -ms-grid-columns: auto;
+                grid-template-columns: auto;
+            }
+        }
+
+        .sub-news-section .subnews-container .subnews .subnews-image {
+            position: relative;
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+
+            .sub-news-section .subnews-container .subnews .subnews-image img {
+                width: 100%;
+            }
+
+            .sub-news-section .subnews-container .subnews .subnews-image .info {
+                position: absolute;
+                bottom: 7px;
+                padding: 10px;
+                color: #fff;
+                background: rgba(0, 0, 0, 0.5);
+            }
+
+                .sub-news-section .subnews-container .subnews .subnews-image .info p {
+                    padding: 0;
+                    margin: 0;
+                    font-size: .8em;
+                }
+
+        .sub-news-section .subnews-container .subnews .subnews-info {
+            padding: 10px;
+        }
+
+            .sub-news-section .subnews-container .subnews .subnews-info h1 {
+                font-size: 1em;
+                margin: 2px;
+            }
     </style>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <main>
         <div class="main_container">
-            <h3 id="heading" runat="server">Heading</h3>
-            <div class="main-Content" id="mainContent" runat="server"></div>
+            <h3 id="heading" runat="server" class="lable">Heading</h3>
+            <section class="sub-news-section">
+                <div class="subnews-container" runat="server" id="subnews_container">
+                </div>
+                <div id="ads" runat="server"></div>
+            </section>
         </div>
     </main>
 

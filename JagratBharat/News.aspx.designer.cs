@@ -85,6 +85,15 @@ namespace JagratBharat {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl heading;
         
         /// <summary>
+        /// headImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage headImage;
+        
+        /// <summary>
         /// PostHeader control.
         /// </summary>
         /// <remarks>
@@ -166,13 +175,13 @@ namespace JagratBharat {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A2;
         
         /// <summary>
-        /// RelatedNews control.
+        /// subnews_container control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl RelatedNews;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl subnews_container;
         
         /// <summary>
         /// ads control.

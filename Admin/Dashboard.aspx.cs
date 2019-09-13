@@ -133,19 +133,23 @@ namespace Admin
 
         protected void grdScroller_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int postID = Convert.ToInt32(e.CommandArgument);
-            var selectedPost = db.Posts.Where(n => n.Id == postID).SingleOrDefault();
-            if(selectedPost.SelectedScroller==null || selectedPost.SelectedScroller == false)
+            if(e.CommandName== "select")
             {
-                selectedPost.SelectedScroller = true;
-                db.SubmitChanges();
+                int postID = Convert.ToInt32(e.CommandArgument);
+                var selectedPost = db.Posts.Where(n => n.Id == postID).SingleOrDefault();
+                if (selectedPost.SelectedScroller == null || selectedPost.SelectedScroller == false)
+                {
+                    selectedPost.SelectedScroller = true;
+                    db.SubmitChanges();
+                }
+                else
+                {
+                    selectedPost.SelectedScroller = false;
+                    db.SubmitChanges();
+                }
+                loadScroller();
             }
-            else
-            {
-                selectedPost.SelectedScroller = false;
-                db.SubmitChanges();
-            }
-            loadScroller();
+            
         }
 
         protected void grdNews_PageIndexChanging(object sender, GridViewPageEventArgs e)

@@ -194,7 +194,7 @@
                     <asp:BoundField DataField="headline" HeaderText="Headline" />
                     <asp:TemplateField HeaderText="Selected">
                         <ItemTemplate>
-                            <asp:Button runat="server" ID="btnSelected" BorderColor="Black" CssClass='<%# Eval("css") %>' CommandArgument='<%# Eval("Id") %>' />
+                            <asp:Button runat="server" ID="btnSelected" BorderColor="Black" CssClass='<%# Eval("css") %>' CommandName="select" CommandArgument='<%# Eval("Id") %>' />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Jagrat Bharat News-Home" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="JagratBharat.index" %>
+﻿<%@ Page Title="Jagrat Bharat News-Home" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="JagratBharat.Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -84,8 +84,8 @@
 
                 .top-news article .info p.main-content {
                     font-size: 1em;
-                    max-height:300px;
-                    overflow:hidden;
+                    max-height: 300px;
+                    overflow: hidden;
                     opacity: 1;
                     text-align: justify;
                 }
@@ -190,8 +190,8 @@
 
         .morelinks {
             padding: 30px;
-            max-height:300px;
-            overflow-y:scroll;
+            max-height: 300px;
+            overflow-y: scroll;
         }
 
             .morelinks a {
@@ -248,9 +248,9 @@
                     -ms-flex-line-pack: center;
                     align-content: center;
                     cursor: pointer;
-                    text-decoration:none;
+                    text-decoration: none;
                 }
-                 
+
 
                 .extra .extra-items .date {
                     display: -ms-grid;
@@ -340,7 +340,6 @@
                         <p runat="server" id="topDate">09<sup>th</sup>Semtember 2019</p>
 
                         <p class="main-content" runat="server" id="para">
-                            
                         </p>
                         <div class="button-container">
                             <button class="blue-button absolute-right" runat="server" id="btntop">Read More</button>
@@ -350,12 +349,31 @@
 
             </div>
         </section>
+        <section>
+            <div class="top-news">
+                <article>  
+                    <div class="top-news-video" runat="server" id="top_news_video">
+
+                    </div>
+                    <div class="info">
+                        <h1 runat="server" id="videoHeading" >Lorem Ipsum Headlines</h1>
+                        <p runat="server" id="videoCategory" >International</p>
+                        <p runat="server" id="videoDate" >09<sup>th</sup>Semtember 2019</p>
+                        <p class="main-content" runat="server" id="videoContent">
+                        </p>
+                        <div class="button-container">
+                            <button class="blue-button absolute-right" runat="server" id="btntop2">Read More</button>
+                        </div>
+                    </div>
+                     
+                </article>
+            </div>
+        </section>
         <section class="sub-news-section">
             <div class="lable">
                 Latest News
             </div>
             <div class="subnews-container" runat="server" id="subnews_container">
-                
             </div>
         </section>
 
@@ -363,7 +381,6 @@
             <div class="lable">More links</div>
             <div class="more-links-container">
                 <div class="morelinks" id="moreLinks" runat="server">
-                    
                 </div>
                 <div class="facebook-comment">
                     <div id="fb-root"></div>
@@ -393,12 +410,11 @@
                         <iframe
                             src="https://free.timeanddate.com/clock/i6xksqdw/n1690/fn11/fs20/fcff4271/tct/pct/tt0/tw0/tm1/tb1"
                             frameborder="0" width="209" height="26" allowtransparency="true"></iframe>
-
-
                     </div>
-
-                    <div class="rashifal">
-                        Rashifal
+                    <div class="share-buttons">
+                        <div class="lable">Other Platforms</div>
+                        <div><i style="font-size:30px" class="fa fa-facebook-square" onclick="window.location='https://www.facebook.com/JagratBharatNews.in/'"></i></div>
+                        <div><i style="font-size:30px"  class="fa fa-youtube" onclick="window.location='https://www.youtube.com/channel/UCko-vdab8OCR6iGSnP8UOKg'"></i></div>
                     </div>
                 </div>
                 <div class="facebook-page">

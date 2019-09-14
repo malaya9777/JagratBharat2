@@ -406,17 +406,21 @@
                         <a class="share-button" href="https://twitter.com/intent/tweet?text=Jagrat+Bharat+News https://www.jagratbharatnews.in"><i class="fa fa-twitter"></i></a>
                         <a class="share-button" href="whatsapp://send?text=Jagrat+Bharat+News https://www.jagratbharatnews.in"><i class="fa fa-whatsapp"></i></a>
                     </div>
-                    <div class="date">
-                        <iframe
-                            src="https://free.timeanddate.com/clock/i6xksqdw/n1690/fn11/fs20/fcff4271/tct/pct/tt0/tw0/tm1/tb1"
-                            frameborder="0" width="209" height="26" allowtransparency="true"></iframe>
-                    </div>
+                    
                     <div class="share-buttons">
                         <div class="lable">Other Platforms</div>
                         <div><i style="font-size:30px" class="fa fa-facebook-square" onclick="window.location='https://www.facebook.com/JagratBharatNews.in/'"></i></div>
                         <div><i style="font-size:30px"  class="fa fa-youtube" onclick="window.location='https://www.youtube.com/channel/UCko-vdab8OCR6iGSnP8UOKg'"></i></div>
                     </div>
+
+                    <div class="date">
+                        <iframe
+                            src="https://free.timeanddate.com/clock/i6xksqdw/n1690/fn11/fs20/fcff4271/tct/pct/tt0/tw0/tm1/tb1"
+                            frameborder="0" width="209" height="26" allowtransparency="true"></iframe>
+                    </div>
                 </div>
+               
+               
                 <div class="facebook-page">
                     <iframe
                         src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FJagratBharatNews.in%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"

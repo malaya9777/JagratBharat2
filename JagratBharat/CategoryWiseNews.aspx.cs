@@ -32,12 +32,12 @@ namespace JagratBharat
         {
             using (dbDataContext db = new dbDataContext())
             {
-                var posts = db.Posts.Where(n => n.Category == catID && n.Submitted == true).OrderByDescending(n => n.NewsDate);
+                var posts = db.Posts.Where(n => n.Category == catID && n.Submitted == true).OrderByDescending(n => n.NewsDate).Take(30);
                 var cards = "";
                 foreach (var c in posts)
                 {
                     cards += "<article class=\"subnews\"><div class=\"subnews-image\">" +
-                                "<img data-src=\"getImage.ashx?PostID=" + c.Id + "&Size=thumbnail\" alt =\"" + c.HeadLine + "\" style='min-height:300px;'>" +
+                                "<img src=\"defaults/default.png\" data-src=\"getImage.ashx?PostID=" + c.Id + "&Size=thumbnail\" alt =\"" + c.HeadLine + "\" style='min-height:300px;'>" +
                                  "<div class=\"info\"> <p>" + db.Post_Categories.Where(n => n.Id == c.Category).Select(n => n.Name).FirstOrDefault() + "</p>" +
                                     "<p>" + Convert.ToDateTime(c.NewsDate).ToString("dd MMMM yyyy") + "</p></div></div><div class=\"subnews-info\"><h1>" + c.HeadLine + "</h1>" +
                                     "<button class=\"blue-button\" onclick='window.open(\"News.aspx?ID=" + globalMethods.EncodeID(c.Id) + "\")'>Read More</button></div></article>";

@@ -61,7 +61,7 @@ namespace JagratBharat
 
         private void loadMoreLinks(List<Post> posts)
         {
-            var extraPosts = posts.OrderByDescending(n => n.Id).Skip(37).Take(100);
+            var extraPosts = posts.OrderByDescending(n => n.Id).Skip(37).Take(50);
             var linkString = "";
             foreach (var p in extraPosts)
             {
@@ -80,7 +80,7 @@ namespace JagratBharat
                 foreach (var p in selectedPost)
                 {
                     innerHTML += "<article class=\"subnews\"><div class=\"subnews-image\">" +
-                                "<img data-src=\"getImage.ashx?PostID=" + p.Id + "&Size=thumbnail\" alt =\"" + p.HeadLine + "\" style='min-height:300px;'>" +
+                                "<img src=\"defaults/default.png\" data-src=\"getImage.ashx?PostID=" + p.Id + "&Size=thumbnail\" alt =\"" + p.HeadLine + "\" style='min-height:300px;'>" +
                                  "<div class=\"info\"> <p>" + db.Post_Categories.Where(n => n.Id == p.Category).Select(n => n.Name).FirstOrDefault() + "</p>" +
                                     "<p>" + Convert.ToDateTime(p.NewsDate).ToString("dd MMMM yyyy") + "</p></div></div><div class=\"subnews-info\"><h1>" + p.HeadLine + "</h1>" +
                                     "<button class=\"blue-button\" onclick='window.open(\"News.aspx?ID=" + globalMethods.EncodeID(p.Id) + "\")'>Read More</button></div></article>";

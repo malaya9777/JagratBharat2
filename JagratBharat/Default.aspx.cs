@@ -61,7 +61,7 @@ namespace JagratBharat
 
         private void loadMoreLinks(List<Post> posts)
         {
-            var extraPosts = posts.OrderByDescending(n => n.Id).Skip(37);
+            var extraPosts = posts.OrderByDescending(n => n.Id).Skip(37).Take(100);
             var linkString = "";
             foreach (var p in extraPosts)
             {

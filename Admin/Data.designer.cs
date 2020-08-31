@@ -22,7 +22,7 @@ namespace Admin
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="JagratBharat")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="jagragbz_db")]
 	public partial class DataDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -30,12 +30,12 @@ namespace Admin
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertHoroscope(Horoscope instance);
-    partial void UpdateHoroscope(Horoscope instance);
-    partial void DeleteHoroscope(Horoscope instance);
     partial void InsertZodiac(Zodiac instance);
     partial void UpdateZodiac(Zodiac instance);
     partial void DeleteZodiac(Zodiac instance);
+    partial void InsertHoroscope(Horoscope instance);
+    partial void UpdateHoroscope(Horoscope instance);
+    partial void DeleteHoroscope(Horoscope instance);
     partial void InsertPost_Category(Post_Category instance);
     partial void UpdatePost_Category(Post_Category instance);
     partial void DeletePost_Category(Post_Category instance);
@@ -54,6 +54,9 @@ namespace Admin
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
+    partial void InsertAdvertisement(Advertisement instance);
+    partial void UpdateAdvertisement(Advertisement instance);
+    partial void DeleteAdvertisement(Advertisement instance);
     #endregion
 		
 		public DataDataContext() : 
@@ -86,19 +89,19 @@ namespace Admin
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Horoscope> Horoscopes
-		{
-			get
-			{
-				return this.GetTable<Horoscope>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Zodiac> Zodiacs
 		{
 			get
 			{
 				return this.GetTable<Zodiac>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Horoscope> Horoscopes
+		{
+			get
+			{
+				return this.GetTable<Horoscope>();
 			}
 		}
 		
@@ -147,6 +150,124 @@ namespace Admin
 			get
 			{
 				return this.GetTable<User>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Advertisement> Advertisements
+		{
+			get
+			{
+				return this.GetTable<Advertisement>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Zodiacs")]
+	public partial class Zodiac : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Zodiac_Odia;
+		
+		private string _Zodiac_English;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnZodiac_OdiaChanging(string value);
+    partial void OnZodiac_OdiaChanged();
+    partial void OnZodiac_EnglishChanging(string value);
+    partial void OnZodiac_EnglishChanged();
+    #endregion
+		
+		public Zodiac()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zodiac_Odia", DbType="NVarChar(100)")]
+		public string Zodiac_Odia
+		{
+			get
+			{
+				return this._Zodiac_Odia;
+			}
+			set
+			{
+				if ((this._Zodiac_Odia != value))
+				{
+					this.OnZodiac_OdiaChanging(value);
+					this.SendPropertyChanging();
+					this._Zodiac_Odia = value;
+					this.SendPropertyChanged("Zodiac_Odia");
+					this.OnZodiac_OdiaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zodiac_English", DbType="VarChar(100)")]
+		public string Zodiac_English
+		{
+			get
+			{
+				return this._Zodiac_English;
+			}
+			set
+			{
+				if ((this._Zodiac_English != value))
+				{
+					this.OnZodiac_EnglishChanging(value);
+					this.SendPropertyChanging();
+					this._Zodiac_English = value;
+					this.SendPropertyChanged("Zodiac_English");
+					this.OnZodiac_EnglishChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -284,116 +405,6 @@ namespace Admin
 					this._Horoscope_English = value;
 					this.SendPropertyChanged("Horoscope_English");
 					this.OnHoroscope_EnglishChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Zodiacs")]
-	public partial class Zodiac : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Zodiac_Odia;
-		
-		private string _Zodiac_English;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnZodiac_OdiaChanging(string value);
-    partial void OnZodiac_OdiaChanged();
-    partial void OnZodiac_EnglishChanging(string value);
-    partial void OnZodiac_EnglishChanged();
-    #endregion
-		
-		public Zodiac()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zodiac_Odia", DbType="NVarChar(100)")]
-		public string Zodiac_Odia
-		{
-			get
-			{
-				return this._Zodiac_Odia;
-			}
-			set
-			{
-				if ((this._Zodiac_Odia != value))
-				{
-					this.OnZodiac_OdiaChanging(value);
-					this.SendPropertyChanging();
-					this._Zodiac_Odia = value;
-					this.SendPropertyChanged("Zodiac_Odia");
-					this.OnZodiac_OdiaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zodiac_English", DbType="VarChar(100)")]
-		public string Zodiac_English
-		{
-			get
-			{
-				return this._Zodiac_English;
-			}
-			set
-			{
-				if ((this._Zodiac_English != value))
-				{
-					this.OnZodiac_EnglishChanging(value);
-					this.SendPropertyChanging();
-					this._Zodiac_English = value;
-					this.SendPropertyChanged("Zodiac_English");
-					this.OnZodiac_EnglishChanged();
 				}
 			}
 		}
@@ -641,6 +652,10 @@ namespace Admin
 		
 		private System.Nullable<bool> _SelectedScroller;
 		
+		private string _ImagePath;
+		
+		private string _ThumbnailPath;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -665,6 +680,10 @@ namespace Admin
     partial void OnSubmittedChanged();
     partial void OnSelectedScrollerChanging(System.Nullable<bool> value);
     partial void OnSelectedScrollerChanged();
+    partial void OnImagePathChanging(string value);
+    partial void OnImagePathChanged();
+    partial void OnThumbnailPathChanging(string value);
+    partial void OnThumbnailPathChanged();
     #endregion
 		
 		public Post()
@@ -868,6 +887,46 @@ namespace Admin
 					this._SelectedScroller = value;
 					this.SendPropertyChanged("SelectedScroller");
 					this.OnSelectedScrollerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImagePath", DbType="VarChar(500)")]
+		public string ImagePath
+		{
+			get
+			{
+				return this._ImagePath;
+			}
+			set
+			{
+				if ((this._ImagePath != value))
+				{
+					this.OnImagePathChanging(value);
+					this.SendPropertyChanging();
+					this._ImagePath = value;
+					this.SendPropertyChanged("ImagePath");
+					this.OnImagePathChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThumbnailPath", DbType="VarChar(500)")]
+		public string ThumbnailPath
+		{
+			get
+			{
+				return this._ThumbnailPath;
+			}
+			set
+			{
+				if ((this._ThumbnailPath != value))
+				{
+					this.OnThumbnailPathChanging(value);
+					this.SendPropertyChanging();
+					this._ThumbnailPath = value;
+					this.SendPropertyChanged("ThumbnailPath");
+					this.OnThumbnailPathChanged();
 				}
 			}
 		}
@@ -1486,6 +1545,236 @@ namespace Admin
 					this._Active = value;
 					this.SendPropertyChanged("Active");
 					this.OnActiveChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Advertisement")]
+	public partial class Advertisement : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Headline;
+		
+		private string _ImagePath;
+		
+		private string _ThumbnailPath;
+		
+		private System.Nullable<System.DateTime> _PublishedOn;
+		
+		private System.Nullable<System.DateTime> _Updto;
+		
+		private string _PhoneNumber;
+		
+		private System.Nullable<bool> _Status;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnHeadlineChanging(string value);
+    partial void OnHeadlineChanged();
+    partial void OnImagePathChanging(string value);
+    partial void OnImagePathChanged();
+    partial void OnThumbnailPathChanging(string value);
+    partial void OnThumbnailPathChanged();
+    partial void OnPublishedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnPublishedOnChanged();
+    partial void OnUpdtoChanging(System.Nullable<System.DateTime> value);
+    partial void OnUpdtoChanged();
+    partial void OnPhoneNumberChanging(string value);
+    partial void OnPhoneNumberChanged();
+    partial void OnStatusChanging(System.Nullable<bool> value);
+    partial void OnStatusChanged();
+    #endregion
+		
+		public Advertisement()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Headline", DbType="VarChar(200)")]
+		public string Headline
+		{
+			get
+			{
+				return this._Headline;
+			}
+			set
+			{
+				if ((this._Headline != value))
+				{
+					this.OnHeadlineChanging(value);
+					this.SendPropertyChanging();
+					this._Headline = value;
+					this.SendPropertyChanged("Headline");
+					this.OnHeadlineChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImagePath", DbType="VarChar(500)")]
+		public string ImagePath
+		{
+			get
+			{
+				return this._ImagePath;
+			}
+			set
+			{
+				if ((this._ImagePath != value))
+				{
+					this.OnImagePathChanging(value);
+					this.SendPropertyChanging();
+					this._ImagePath = value;
+					this.SendPropertyChanged("ImagePath");
+					this.OnImagePathChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThumbnailPath", DbType="VarChar(500)")]
+		public string ThumbnailPath
+		{
+			get
+			{
+				return this._ThumbnailPath;
+			}
+			set
+			{
+				if ((this._ThumbnailPath != value))
+				{
+					this.OnThumbnailPathChanging(value);
+					this.SendPropertyChanging();
+					this._ThumbnailPath = value;
+					this.SendPropertyChanged("ThumbnailPath");
+					this.OnThumbnailPathChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PublishedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PublishedOn
+		{
+			get
+			{
+				return this._PublishedOn;
+			}
+			set
+			{
+				if ((this._PublishedOn != value))
+				{
+					this.OnPublishedOnChanging(value);
+					this.SendPropertyChanging();
+					this._PublishedOn = value;
+					this.SendPropertyChanged("PublishedOn");
+					this.OnPublishedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Updto", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Updto
+		{
+			get
+			{
+				return this._Updto;
+			}
+			set
+			{
+				if ((this._Updto != value))
+				{
+					this.OnUpdtoChanging(value);
+					this.SendPropertyChanging();
+					this._Updto = value;
+					this.SendPropertyChanged("Updto");
+					this.OnUpdtoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNumber", DbType="VarChar(50)")]
+		public string PhoneNumber
+		{
+			get
+			{
+				return this._PhoneNumber;
+			}
+			set
+			{
+				if ((this._PhoneNumber != value))
+				{
+					this.OnPhoneNumberChanging(value);
+					this.SendPropertyChanging();
+					this._PhoneNumber = value;
+					this.SendPropertyChanged("PhoneNumber");
+					this.OnPhoneNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Bit")]
+		public System.Nullable<bool> Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
 				}
 			}
 		}

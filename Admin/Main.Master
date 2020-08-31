@@ -130,7 +130,7 @@
     <form id="form1" runat="server">
         <nav class="navigationBar">
             <div class="userInfo">
-                <img id="userImg" class="userImage" src="images/default/user.png" />
+                <img id="userImg" class="userImage" src="Image/generic-user-icon-10.jpg" />
             </div>
             <div class="menuList">
                 <ul>
@@ -139,6 +139,7 @@
                     <li><a href="Dashboard.aspx">Dashboard</a></li>
                     <li><a href="ManageUser.aspx">Manage User</a></li>
                     <li><a href="PostNews.aspx">Post News</a></li>
+                    <li><a href="Advertisement.aspx">Advertisement</a></li>
                     <li><a href="Horoscope.aspx">Horoscope</a></li>
                     <li><a href="Signout.aspx" class="logout">Logout</a></li>
                 </ul>

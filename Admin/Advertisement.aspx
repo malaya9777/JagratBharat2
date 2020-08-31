@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Post News" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="PostNews.aspx.cs" Inherits="Admin.PostNews" %>
+﻿<%@ Page Title="Advertisement" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Advertisement.aspx.cs" Inherits="Admin.Advertisement" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -6,21 +6,25 @@
         .container {
             max-width: 85%;
             margin: 30px 50px auto auto;
-            grid-template-columns: 50% 50%;
+            grid-template-columns: 30% 70%;
             display: grid;
             grid-gap: 10px;
         }
 
-        .postNews, .latestNews {
+        .entry, .grid-container {
             border: 1px solid rgba(0,0,0,.1);
             border-radius: 5px;
             padding: 10px;
         }
 
-        .action {
-            margin-top: 10px;
+        @media (max-width:1400px) {
+            .container {
+                width: 80%;
+                grid-template-columns: 30% 70%;
+                display: grid;
+                grid-gap: 10px;
+            }
         }
-
         .previewPanle {
             position: fixed;
             height: 95vh;
@@ -79,62 +83,56 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <div class="postNews">
-            <div>
-                <h3>Create Post</h3>
+        <div class="entry">
+            <h3>Post Advertisement</h3>
+            <hr />
+            <br />
+            <br />
+            <div class="horoscope">
+                <asp:Label Text="Quote" runat="server"> </asp:Label><br />
+                <asp:TextBox ID="txtHeadline" runat="server" CssClass="textBox" ValidationGroup="from" placeholder="Add Name"></asp:TextBox>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtHeadline" ID="rfv1" ErrorMessage="*" ForeColor="Red" ValidationGroup="from"></asp:RequiredFieldValidator>
             </div>
-            <div class="newsCategory">
-                <asp:DropDownList runat="server" ID="ddlCategory" CssClass="textBox"></asp:DropDownList>
-                <asp:RequiredFieldValidator ID="rf3" runat="server" ControlToValidate="ddlCategory" ValidationGroup="Main" InitialValue="0" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-            </div>
-            <div class="newsHeadline">
-                <asp:TextBox runat="server" CssClass="textBox" ID="txtHeadline" placeholder="News Headline" Width="100%"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="rf1" runat="server" ControlToValidate="txtHeadline" ValidationGroup="Main" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-            </div>
-            <div class="newsDate">
-                <asp:TextBox runat="server" ID="txtNewsDate" CssClass="textBox" placeholder="News Date" AutoCompleteType="None"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtNewsDate" ValidationGroup="Main" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+            <br />
+            <br />
+            <div class="horoscope">
+                <asp:Label Text="Up to Date" runat="server"> </asp:Label><br />
+                <asp:TextBox ID="txtDate" runat="server" CssClass="textBox" AutoCompleteType="None" ValidationGroup="from"></asp:TextBox>
                 <asp:ToolkitScriptManager runat="server"></asp:ToolkitScriptManager>
-                <asp:CalendarExtender TargetControlID="txtNewsDate" Format="dd-MMM-yyyy" runat="server" ID="ce1" />
+                <asp:CalendarExtender runat="server" ID="ce1" TargetControlID="txtDate" Format="dd-MMM-yyyy"></asp:CalendarExtender>
+                <asp:RequiredFieldValidator ControlToValidate="txtDate" runat="server" ErrorMessage="*" ForeColor="Red" ValidationGroup="from"></asp:RequiredFieldValidator>
             </div>
-            <div class="newsBody">
-                <asp:TextBox runat="server" CssClass="textBox" ID="txtBody" placeholder="News Body" TextMode="MultiLine" Height="200px" Width="100%"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="rf2" runat="server" ControlToValidate="txtBody" ErrorMessage="*" ValidationGroup="Main" ForeColor="Red"></asp:RequiredFieldValidator>
-
+            <br />
+            <br />
+            <div class="horoscope">
+                <asp:Label Text="Phone number" runat="server"></asp:Label><br />
+                <asp:TextBox ID="txtPhone" runat="server" CssClass="textBox" ValidationGroup="from" placeholder="Phone number" AutoCompleteType="BusinessPhone" MaxLength="10"></asp:TextBox>
+                <asp:RequiredFieldValidator runat="server" ID="rfv2" ControlToValidate="txtPhone" ErrorMessage="*" ForeColor="Red" ValidationGroup="from"></asp:RequiredFieldValidator>
             </div>
-            <div class="newsImage">
-                <asp:FileUpload runat="server" CssClass="textBox" ID="fImage" placeholder="Select Image" />
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="fImage" ValidationGroup="Main" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                <asp:Image runat="server" Height="20" Width="40" ID="imgPreview" onclick="CreatePreview(this.alt)" />
-                
+            <br />
+            <br />
+            <div class="horoscope">
+                <asp:Label Text="Select Image" runat="server"> </asp:Label><br />
+                <asp:FileUpload ID="fImage" runat="server" CssClass="textBox" ValidationGroup="from"></asp:FileUpload>
+                <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator1" ControlToValidate="fImage" ErrorMessage="*" ForeColor="Red" ValidationGroup="from"></asp:RequiredFieldValidator>
             </div>
-            <div class="Embedvideo">
-                <asp:TextBox runat="server" CssClass="textBox" ID="videoEmbed" Width="100%" placeholder="YouTube Video URL"></asp:TextBox>
-            </div>
-            <div class="action">
-                <asp:Button ID="btnSubmit" runat="server" CssClass="btn green" Text="Submit" ValidationGroup="Main" OnClick="btnSubmit_Click" />
+            <div class="submit">
+                <asp:Button runat="server" Text="Submit" CssClass="btnSubmit" ID="btnSubmit" OnClick="btnSubmit_Click" ValidationGroup="from" />
+                <br />
+                <br />
+                <asp:Button ID="btnDelete" runat="server" Text="Delete older data" CssClass="btn red" OnClick="btnDelete_Click" OnClientClick="return confirm('Are you sure to delete older data?')" Width="100px" />
             </div>
         </div>
-
-        <div class="latestNews">
-            <div id="notAllowed" runat="server" class="notAllowed">
-                <p>You are not authorized to view this page!<br>
-                    Please contack administrator.</p>
-            </div>
+        <div class="grid-container">
             <asp:GridView ID="grdPost" runat="server" GridLines="Horizontal" OnRowCommand="grdPost_RowCommand" AllowPaging="true" PageSize="10" OnPageIndexChanging="grdPost_PageIndexChanging" HeaderStyle-Font-Bold="false" HeaderStyle-HorizontalAlign="Left" RowStyle-Height="40" BorderStyle="None" AutoGenerateColumns="false" Width="100%">
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="ID" />
                     <asp:BoundField DataField="HeadLine" HeaderText="Head Line" />
                     <asp:TemplateField HeaderText="Image">
                         <ItemTemplate>
-                            <asp:Image ID="imgThumnail" runat="server" CssClass="image" AlternateText='<%#Eval("OriginalImageURL") %>' ImageUrl='<%#Eval("ThumbnailImageURL") %>' Height="20" Width="40" onclick="CreatePreview(this.alt)" />
+                            <asp:Image ID="imgThumnail" runat="server" CssClass="image" AlternateText='<%#Eval("ImagePath") %>' ImageUrl='<%#Eval("ThumbnailPath") %>' Height="60" Width="120" onclick="CreatePreview(this.alt)" />
                         </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="View">
-                        <ItemTemplate>
-                            <a href='<%#Eval("PreviewURL") %>' target="_blank">View</a>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                    </asp:TemplateField>                   
                     <asp:TemplateField HeaderText="Edit">
                         <ItemTemplate>
                             <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn orange" CommandArgument='<%# Eval("Id")%>' CommandName="editPost" />
@@ -142,7 +140,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Action">
                         <ItemTemplate>
-                            <asp:Button ID="btnSubmit" runat="server" CssClass='<%# Eval("SendButtonCss")%>' Text='<%# Eval("SendButtonTxt")%>' CommandArgument='<%# Eval("Id")%>' CommandName="sendPost" />
+                            <asp:Button ID="btnSubmit" runat="server" Text="Publish" CssClass="btn green" CommandArgument='<%# Eval("Id")%>' CommandName="sendPost" />
                         </ItemTemplate>
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="Delete">
@@ -150,10 +148,8 @@
                             <asp:Button ID="btnDelete" runat="server" CssClass='btn red' Text='Delete' CommandArgument='<%# Eval("Id")%>' CommandName="deletePost" OnClientClick=" return confirm('Are you sure?');" />
                         </ItemTemplate>
                     </asp:TemplateField>
-
                 </Columns>
             </asp:GridView>
-            <asp:Image ID="imgTest" runat="server" />
         </div>
     </div>
     <script>

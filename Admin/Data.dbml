@@ -1,5 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="JagratBharat" Class="DataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-HH47H7V\SQLEXPRESS;Initial Catalog=JagratBharat;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="JagratBharatConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="jagragbz_db" Class="DataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=jagragbz_db;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="JagratBharatConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Zodiacs" Member="Zodiacs">
+    <Type Name="Zodiac">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Zodiac_Odia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Zodiac_English" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Horoscope" Member="Horoscopes">
     <Type Name="Horoscope">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -7,13 +14,6 @@
       <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Horoscope_Odia" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Horoscope_English" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Zodiacs" Member="Zodiacs">
-    <Type Name="Zodiac">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Zodiac_Odia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Zodiac_English" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Post_Categories" Member="Post_Categories">
@@ -41,6 +41,8 @@
       <Column Name="PostedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Submitted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="SelectedScroller" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ImagePath" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ThumbnailPath" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Roles" Member="Roles">
@@ -74,6 +76,18 @@
       <Column Name="LastSeen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Reset_Request" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Advertisement" Member="Advertisements">
+    <Type Name="Advertisement">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Headline" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ImagePath" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ThumbnailPath" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="PublishedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Updto" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

@@ -4,6 +4,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Web.Security;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Admin
@@ -39,11 +40,11 @@ namespace Admin
         // Load Post GridView
         private void loadPostGrid()
         {
-            var posts = db.Posts.OrderByDescending(n=>n.PostedOn).Select(n => new
+            var posts = db.Posts.OrderByDescending(n => n.PostedOn).Select(n => new
             {
                 n.Id,
-                ThumbnailImageURL = "ImageHandler.ashx?PostID=" + n.Id + "&Size=thumbnail",
-                OriginalImageURL = "ImageHandler.ashx?PostID=" + n.Id + "&Size=original",
+                ThumbnailImageURL = n.ThumbnailPath,
+                OriginalImageURL = n.ImagePath,
                 PreviewURL = "Preview.aspx?ID=" + n.Id,
                 SendButtonCss = n.Submitted == true ? "btn green" : "btn orange",
                 SendButtonTxt = n.Submitted == true ? "Depublish" : "Publish",
@@ -111,16 +112,10 @@ namespace Admin
             post.NewsDate = Convert.ToDateTime(txtNewsDate.Text);
             post.PostedOn = DateTime.Now;
             post.PostedBy = Convert.ToInt32(Session["LoginId"]);
-            if (fImage.HasFile)
-            {
-                System.Drawing.Image m = GlobalMethods.reduceImageSize(GlobalMethods.BinaryToImage(fImage.FileBytes));
-                MemoryStream ms = new MemoryStream();
-                m.Save(ms, ImageFormat.Jpeg);
-                post.Image = ms.ToArray();
-            }
             post.VideoPath = videoEmbed.Text;
             if (!recordExists)
             {
+                //Insert new record
                 post.Submitted = false;
                 db.Posts.InsertOnSubmit(post);
                 db.SubmitChanges();
@@ -128,18 +123,57 @@ namespace Admin
 
                 //Upload splited paragraph
                 uploadParagraphs(splitText(txtBody.Text), postID);
+                if (fImage.HasFile)
+                {
+                    saveImage(fImage.FileBytes, postID);
+                }
+
                 ClientScript.RegisterClientScriptBlock(Page.GetType(), "loadBlank", "alert('Post ID:" + postID + " generated Successfully!')", true);
             }
             else
             {
-
+                //Update post
                 db.SubmitChanges();
                 removeOldParagraphs(post.Id);
                 uploadParagraphs(splitText(txtBody.Text), post.Id);
+                if (fImage.HasFile)
+                {
+                    saveImage(fImage.FileBytes, post.Id);
+                }
                 ClientScript.RegisterClientScriptBlock(Page.GetType(), "loadBlank", "alert('Post ID:" + post.Id + " updated Successfully!')", true);
             }
             resetAll(sender, e);
 
+        }
+
+        private void saveImage(byte[] fileBytes, int postID)
+        {
+            string path = $"PostImage/{postID}/";
+            string severPath = Server.MapPath(path);
+
+            var newImage = new Bitmap(240, 120);
+            using (var g = Graphics.FromImage(newImage))
+            {
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+                MemoryStream ms = new MemoryStream(fileBytes.ToArray());
+                g.DrawImage(System.Drawing.Image.FromStream(ms), 0, 0, 240, 120);
+            }
+            if (!Directory.Exists(severPath))
+            {
+                Directory.CreateDirectory(severPath);
+            }
+
+            //Saving original
+            File.WriteAllBytes(severPath + postID + ".jpg", fileBytes);
+            //Save thumbnail
+            File.WriteAllBytes(severPath + postID + "_thumb.jpg", (byte[])new ImageConverter().ConvertTo(newImage, typeof(byte[])));
+
+            var post = db.Posts.Where(n => n.Id == postID).SingleOrDefault();
+            post.ImagePath = $"{path}{postID}.jpg";
+            post.ThumbnailPath = $"{path}{postID}_thumb.jpg";
+            db.SubmitChanges();
         }
 
         // Relode the page
@@ -168,7 +202,8 @@ namespace Admin
             else if (e.CommandName == "sendPost")
             {
                 submitPost(PostID);
-            }else if(e.CommandName == "deletePost")
+            }
+            else if (e.CommandName == "deletePost")
             {
                 deletePost(PostID);
             }
@@ -177,9 +212,19 @@ namespace Admin
         private void deletePost(int postID)
         {
             var post = db.Posts.Where(n => n.Id == postID).SingleOrDefault();
-            db.Posts.DeleteOnSubmit(post);
-            db.SubmitChanges();
-            loadPostGrid();
+            try
+            {               
+                db.Posts.DeleteOnSubmit(post);
+                db.SubmitChanges();
+                loadPostGrid();
+                var path = $"PostImage/{post.Id}";
+                var serverPath = Server.MapPath(path);
+                Directory.Delete(serverPath, true);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(),"Error", $"alert('{ex.Message}')", true);
+            }
         }
 
 
@@ -211,20 +256,20 @@ namespace Admin
             txtNewsDate.Text = Convert.ToDateTime(post.NewsDate).ToString("dd-MMM-yyyy");
             txtBody.Text = loadParagraphs(postID);
             videoEmbed.Text = post.VideoPath;
-            loadImagePreview(postID);
+            loadImagePreview(post);
         }
 
 
         // Load Image Preview in the side of FileUploader
-        private void loadImagePreview(int postID)
+        private void loadImagePreview(Post post)
         {
             imgPreview.Visible = true;
             imgPreview.ImageAlign = ImageAlign.AbsMiddle;
             imgPreview.BorderStyle = BorderStyle.Solid;
             imgPreview.BorderWidth = 5;
             imgPreview.BorderColor = Color.Orange;
-            imgPreview.ImageUrl = "ImageHandler.ashx?PostID=" + postID + "&Size=thumbnail";
-            imgPreview.AlternateText = "ImageHandler.ashx?PostID=" + postID + "&Size=original";
+            imgPreview.ImageUrl = post.ThumbnailPath;
+            imgPreview.AlternateText = post.ImagePath;
         }
 
 

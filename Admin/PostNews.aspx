@@ -3,6 +3,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
+        
         .container {
             max-width: 85%;
             margin: 30px 50px auto auto;
@@ -30,23 +31,16 @@
             border-radius: 5px;
             background-color: rgb(49, 49, 49);
             text-align: center;
-            display:flex;
-            text-align:center;
-            align-items:center;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            position:absolute;
+            top:-100%;
+            transition:.5s;
         }
-
-        @keyframes fadeIn {
-            from {
-                background-color: rgba(49, 49, 49, 0);
-            }
-
-            to {
-                background-color: rgba(49, 49, 49,1);
-            }
-        }
-        
+       
         .previewPanle > img {
-            margin:auto;           
+            margin: auto;
         }
 
         .previewPanle > div {
@@ -63,8 +57,10 @@
             background-color: white;
             cursor: pointer;
         }
-        .image{
-            max-height:80vh;
+
+        .image {
+            max-height: 80vh;
+            max-width:80vw;
         }
 
         @media (max-width:1400px) {
@@ -106,7 +102,7 @@
                 <asp:FileUpload runat="server" CssClass="textBox" ID="fImage" placeholder="Select Image" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="fImage" ValidationGroup="Main" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                 <asp:Image runat="server" Height="20" Width="40" ID="imgPreview" onclick="CreatePreview(this.alt)" />
-                
+
             </div>
             <div class="Embedvideo">
                 <asp:TextBox runat="server" CssClass="textBox" ID="videoEmbed" Width="100%" placeholder="YouTube Video URL"></asp:TextBox>
@@ -118,8 +114,10 @@
 
         <div class="latestNews">
             <div id="notAllowed" runat="server" class="notAllowed">
-                <p>You are not authorized to view this page!<br>
-                    Please contack administrator.</p>
+                <p>
+                    You are not authorized to view this page!<br>
+                    Please contack administrator.
+                </p>
             </div>
             <asp:GridView ID="grdPost" runat="server" GridLines="Horizontal" OnRowCommand="grdPost_RowCommand" AllowPaging="true" PageSize="10" OnPageIndexChanging="grdPost_PageIndexChanging" HeaderStyle-Font-Bold="false" HeaderStyle-HorizontalAlign="Left" RowStyle-Height="40" BorderStyle="None" AutoGenerateColumns="false" Width="100%">
                 <Columns>
@@ -145,7 +143,7 @@
                             <asp:Button ID="btnSubmit" runat="server" CssClass='<%# Eval("SendButtonCss")%>' Text='<%# Eval("SendButtonTxt")%>' CommandArgument='<%# Eval("Id")%>' CommandName="sendPost" />
                         </ItemTemplate>
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="Delete">
+                    <asp:TemplateField HeaderText="Delete">
                         <ItemTemplate>
                             <asp:Button ID="btnDelete" runat="server" CssClass='btn red' Text='Delete' CommandArgument='<%# Eval("Id")%>' CommandName="deletePost" OnClientClick=" return confirm('Are you sure?');" />
                         </ItemTemplate>
@@ -156,14 +154,18 @@
             <asp:Image ID="imgTest" runat="server" />
         </div>
     </div>
+    <div class='previewPanle fadeIn' id='previewPanel'>
+        <div onclick='remove()'>X</div>
+        <img id="previewImage" class='image' src='#'></div>
     <script>
         function CreatePreview(ImageURL) {
-            document.body.innerHTML += "<div class='previewPanle fadeIn' id='previewPanel'><div onclick='remove()'>X</div><img class='image' src='" + ImageURL + "'></div>";
+            document.getElementById('previewImage').src = ImageURL;
+            document.getElementById('previewPanel').style.top = '20px';
 
         };
         function remove() {
-            var previewPanel = document.getElementById("previewPanel");
-            previewPanel.remove();
+            document.getElementById('previewPanel').style.top = '-100%';
+
         };
     </script>
 </asp:Content>

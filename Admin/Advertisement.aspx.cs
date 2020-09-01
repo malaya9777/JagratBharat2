@@ -23,7 +23,19 @@ namespace Admin
 
         private void loadGrid()
         {
-            var adds = db.Advertisements.OrderByDescending(n => n.Id);
+            var adds = db.Advertisements.OrderByDescending(n => n.Id).Select(n=>new
+            {
+                n.Id,
+                n.Headline,
+                n.PublishedOn,
+                n.PublishedTill,
+                n.ImagePath,
+                n.ThumbnailPath,
+                n.PhoneNumber,
+                n.Status,
+                SendButtonCss = n.Status == true ? "btn green" : "btn orange",
+                SendButtonTxt = n.Status == true ? "Depublish" : "Publish",
+            });
             grdPost.DataSource = adds;
             grdPost.DataBind();
         }
@@ -33,13 +45,26 @@ namespace Admin
 
             try
             {
-                Advertisement add = new Advertisement();
+                Advertisement add;
+                if (btnSubmit.Text!="Update")
+                {
+                    add = new Advertisement();
+                }
+                else
+                {
+                    int loadedID = Convert.ToInt32(Session["EditID"]);
+                    add = db.Advertisements.Where(n => n.Id == loadedID).SingleOrDefault();                    
+                }
                 add.Headline = txtHeadline.Text;
-                add.Updto = Convert.ToDateTime(txtDate.Text);
+                add.PublishedTill = Convert.ToDateTime(txtDate.Text);
                 add.PublishedOn = DateTime.Now;
                 add.PhoneNumber = txtPhone.Text;
+                add.Status = false;
 
-                db.Advertisements.InsertOnSubmit(add);
+                if (btnSubmit.Text == "Submit")
+                {
+                    db.Advertisements.InsertOnSubmit(add);
+                }                
                 db.SubmitChanges();
                 int addID = db.Advertisements.OrderByDescending(n => n.Id).Select(n => n.Id).FirstOrDefault();
                 uploadImage(addID);
@@ -94,17 +119,59 @@ namespace Admin
             var id = Convert.ToInt32(e.CommandArgument);
             if (e.CommandName == "editPost")
             {
-
+                Session["EditID"] = id;
+                btnSubmit.Text = "Update";
+                editPost(id);
             }
             else if (e.CommandName == "sendPost")
             {
-
+                launchedPost(id);
+                loadGrid();
             }
             else if (e.CommandName == "deletePost")
             {
-                deleteAdd(id);
-                loadGrid();
+                deleteAdd(id);            
                 
+            }
+        }
+
+        private void launchedPost(int id)
+        {
+            try
+            {
+                var add = db.Advertisements.Where(n => n.Id == id).SingleOrDefault();
+                if(add.Status == false||add.Status == null)
+                {
+                    add.Status = true;
+                }
+                else
+                {
+                    add.Status = false;
+                }
+                
+                db.SubmitChanges();
+
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Error", $"alert('Something is worng!{ex.Message}')", true);
+            }
+
+        }
+
+        private void editPost(int id)
+        {
+            try
+            {
+                var add = db.Advertisements.Where(n => n.Id == id).SingleOrDefault();
+                txtHeadline.Text = add.Headline;
+                txtDate.Text = Convert.ToDateTime(add.PublishedTill).ToString("dd-MMM-yyyy");
+                txtPhone.Text = add.PhoneNumber;
+                
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Error", $"alert('Something is worng!{ex.Message}')", true);
             }
         }
 
@@ -115,7 +182,8 @@ namespace Admin
                 var add = db.Advertisements.Where(n => n.Id == id).SingleOrDefault();
                 db.Advertisements.DeleteOnSubmit(add);
                 db.SubmitChanges();
-                Directory.Delete($"AddImage/{add.Id}", true);
+                Directory.Delete(Server.MapPath($"AddImage/{add.Id}"), true);
+                loadGrid();
             }
             catch (Exception ex)
             {

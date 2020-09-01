@@ -34,23 +34,16 @@
             border-radius: 5px;
             background-color: rgb(49, 49, 49);
             text-align: center;
-            display:flex;
-            text-align:center;
-            align-items:center;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            position:absolute;
+            top:-100%;
+            transition:.5s;
         }
-
-        @keyframes fadeIn {
-            from {
-                background-color: rgba(49, 49, 49, 0);
-            }
-
-            to {
-                background-color: rgba(49, 49, 49,1);
-            }
-        }
-        
+       
         .previewPanle > img {
-            margin:auto;           
+            margin: auto;
         }
 
         .previewPanle > div {
@@ -67,10 +60,11 @@
             background-color: white;
             cursor: pointer;
         }
-        .image{
-            max-height:80vh;
-        }
 
+        .image {
+            max-height: 80vh;
+            max-width:80vw;
+        }
         @media (max-width:1400px) {
             .container {
                 width: 80%;
@@ -127,20 +121,20 @@
             <asp:GridView ID="grdPost" runat="server" GridLines="Horizontal" OnRowCommand="grdPost_RowCommand" AllowPaging="true" PageSize="10" OnPageIndexChanging="grdPost_PageIndexChanging" HeaderStyle-Font-Bold="false" HeaderStyle-HorizontalAlign="Left" RowStyle-Height="40" BorderStyle="None" AutoGenerateColumns="false" Width="100%">
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="ID" />
-                    <asp:BoundField DataField="HeadLine" HeaderText="Head Line" />
-                    <asp:TemplateField HeaderText="Image">
+                    <asp:BoundField DataField="HeadLine" HeaderText="Head Line" ItemStyle-Width="200px"/>
+                    <asp:TemplateField HeaderText="Image" ItemStyle-Width="110px">
                         <ItemTemplate>
-                            <asp:Image ID="imgThumnail" runat="server" CssClass="image" AlternateText='<%#Eval("ImagePath") %>' ImageUrl='<%#Eval("ThumbnailPath") %>' Height="60" Width="120" onclick="CreatePreview(this.alt)" />
+                            <asp:Image ID="imgThumnail" runat="server" CssClass="image" AlternateText='<%#Eval("ImagePath") %>' ImageUrl='<%#Eval("ThumbnailPath") %>' Height="50" Width="100" onclick="CreatePreview(this.alt)" />
                         </ItemTemplate>
                     </asp:TemplateField>                   
                     <asp:TemplateField HeaderText="Edit">
                         <ItemTemplate>
-                            <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn orange" CommandArgument='<%# Eval("Id")%>' CommandName="editPost" />
+                            <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn orange"  CommandArgument='<%# Eval("Id")%>' CommandName="editPost" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Action">
                         <ItemTemplate>
-                            <asp:Button ID="btnSubmit" runat="server" Text="Publish" CssClass="btn green" CommandArgument='<%# Eval("Id")%>' CommandName="sendPost" />
+                            <asp:Button ID="btnSubmit" runat="server" Text='<%#Eval("SendButtonTxt") %>' CssClass='<%#Eval("SendButtonCss") %>' CommandArgument='<%# Eval("Id")%>' CommandName="sendPost" />
                         </ItemTemplate>
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="Delete">
@@ -152,14 +146,18 @@
             </asp:GridView>
         </div>
     </div>
+    <div class='previewPanle fadeIn' id='previewPanel'>
+        <div onclick='remove()'>X</div>
+        <img id="previewImage" class='image' src='#'></div>
     <script>
         function CreatePreview(ImageURL) {
-            document.body.innerHTML += "<div class='previewPanle fadeIn' id='previewPanel'><div onclick='remove()'>X</div><img class='image' src='" + ImageURL + "'></div>";
+            document.getElementById('previewImage').src = ImageURL;
+            document.getElementById('previewPanel').style.top = '20px';
 
         };
         function remove() {
-            var previewPanel = document.getElementById("previewPanel");
-            previewPanel.remove();
+            document.getElementById('previewPanel').style.top = '-100%';
+
         };
     </script>
 </asp:Content>

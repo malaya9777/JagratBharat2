@@ -1580,13 +1580,15 @@ namespace Admin
 		
 		private string _Headline;
 		
+		private string _AddContent;
+		
 		private string _ImagePath;
 		
 		private string _ThumbnailPath;
 		
 		private System.Nullable<System.DateTime> _PublishedOn;
 		
-		private System.Nullable<System.DateTime> _Updto;
+		private System.Nullable<System.DateTime> _PublishedTill;
 		
 		private string _PhoneNumber;
 		
@@ -1600,14 +1602,16 @@ namespace Admin
     partial void OnIdChanged();
     partial void OnHeadlineChanging(string value);
     partial void OnHeadlineChanged();
+    partial void OnAddContentChanging(string value);
+    partial void OnAddContentChanged();
     partial void OnImagePathChanging(string value);
     partial void OnImagePathChanged();
     partial void OnThumbnailPathChanging(string value);
     partial void OnThumbnailPathChanged();
     partial void OnPublishedOnChanging(System.Nullable<System.DateTime> value);
     partial void OnPublishedOnChanged();
-    partial void OnUpdtoChanging(System.Nullable<System.DateTime> value);
-    partial void OnUpdtoChanged();
+    partial void OnPublishedTillChanging(System.Nullable<System.DateTime> value);
+    partial void OnPublishedTillChanged();
     partial void OnPhoneNumberChanging(string value);
     partial void OnPhoneNumberChanged();
     partial void OnStatusChanging(System.Nullable<bool> value);
@@ -1655,6 +1659,26 @@ namespace Admin
 					this._Headline = value;
 					this.SendPropertyChanged("Headline");
 					this.OnHeadlineChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddContent", DbType="NVarChar(MAX)")]
+		public string AddContent
+		{
+			get
+			{
+				return this._AddContent;
+			}
+			set
+			{
+				if ((this._AddContent != value))
+				{
+					this.OnAddContentChanging(value);
+					this.SendPropertyChanging();
+					this._AddContent = value;
+					this.SendPropertyChanged("AddContent");
+					this.OnAddContentChanged();
 				}
 			}
 		}
@@ -1719,22 +1743,22 @@ namespace Admin
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Updto", DbType="DateTime")]
-		public System.Nullable<System.DateTime> Updto
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PublishedTill", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PublishedTill
 		{
 			get
 			{
-				return this._Updto;
+				return this._PublishedTill;
 			}
 			set
 			{
-				if ((this._Updto != value))
+				if ((this._PublishedTill != value))
 				{
-					this.OnUpdtoChanging(value);
+					this.OnPublishedTillChanging(value);
 					this.SendPropertyChanging();
-					this._Updto = value;
-					this.SendPropertyChanged("Updto");
-					this.OnUpdtoChanged();
+					this._PublishedTill = value;
+					this.SendPropertyChanged("PublishedTill");
+					this.OnPublishedTillChanged();
 				}
 			}
 		}

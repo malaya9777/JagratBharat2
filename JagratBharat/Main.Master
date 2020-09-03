@@ -454,7 +454,7 @@
 
         function search_result() {
             let searchBox = document.getElementById("searchText");
-            window.location = "SearchResult.aspx?search=" + searchBox.value;
+            window.location = "SearchResult.aspx?search=" + searchBox.value.replace(new RegExp(" ","g"),'+' );
         };
         function goHome() {
             window.location = "Default.aspx";

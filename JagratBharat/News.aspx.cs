@@ -41,7 +41,7 @@ namespace JagratBharat
                 PostHeader.InnerText = post.HeadLine;
                 category.InnerText = globalMethods.getCategoryName(post.Category);
                 info.InnerText = post.NewsDate.Value.ToLongDateString();
-                loadImageFromPath("getImage.ashx?PostID=" + post.Id + "&Size=orginal");
+                loadImageFromPath(post.ImagePath);
                 loadParagraph(paragraphs, loadVideo(post.VideoPath));
                 loadCards(post.Category, post.Id);
                 loadMetas(post);
@@ -68,7 +68,7 @@ namespace JagratBharat
 
             var path = new Uri(Page.Request.Url, "getImage.ashx");
             var shareURL = new Uri(Page.Request.Url, Request.RawUrl).ToString();
-            og_image.Attributes["content"] = path + "?PostID=" + post.Id + "&Size=thumbnail";
+            og_image.Attributes["content"] = post.ImagePath;
             og_url.Attributes["content"] = shareURL;
 
 
@@ -122,9 +122,7 @@ namespace JagratBharat
         private void loadImageFromPath(string imagePath)
         {
 
-            headImage.Src = imagePath;
-            //heading.Style.Add("background", "linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.6)),border-box,url(" + imagePath + "), no-repeat, center");
-            //heading.Style.Add(" background-size", "100%");
+            headImage.Src = imagePath;            
         }
     }
 }

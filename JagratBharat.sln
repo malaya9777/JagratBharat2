@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JagratBharat", "JagratBhara
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin", "Admin\Admin.csproj", "{3B8FD275-F381-4C58-926E-5327D78B9051}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JagratBharatNewsMVC", "JagratBharatNewsMVC\JagratBharatNewsMVC.csproj", "{88EB54FB-3E05-4107-B5A0-12C5FD2A3B9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3B8FD275-F381-4C58-926E-5327D78B9051}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B8FD275-F381-4C58-926E-5327D78B9051}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B8FD275-F381-4C58-926E-5327D78B9051}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88EB54FB-3E05-4107-B5A0-12C5FD2A3B9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88EB54FB-3E05-4107-B5A0-12C5FD2A3B9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88EB54FB-3E05-4107-B5A0-12C5FD2A3B9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88EB54FB-3E05-4107-B5A0-12C5FD2A3B9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

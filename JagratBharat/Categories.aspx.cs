@@ -32,7 +32,7 @@ namespace JagratBharat
                     foreach (var c in db.Posts.Where(n => n.Category == r.Id && n.Submitted==true).OrderByDescending(n=>n.NewsDate).Take(10))
                     {
                         cards += "<div class='card' onclick='redirect(\"News.aspx?ID=" + globalMethods.EncodeID(c.Id) + "\");'>" +
-                            "<img src=\"defaults/default.png\" data-src='getImage.ashx?PostID=" + c.Id + "&Size=thumbnail' alt=''/>" +
+                            "<img src=\"defaults/default.png\" data-src='"+c.ThumbnailPath+"' alt=''/>" +
                             "<h5>" + globalMethods.Truncate(c.HeadLine, 30) + "</h5>" +
                             "</div>";
                     }

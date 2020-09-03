@@ -7,20 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JagratBharat {
-    
-    
-    public partial class SearchResult {
-        
+namespace JagratBharat
+{
+
+
+    public partial class SearchResult
+    {
+
         /// <summary>
-        /// searchTerm control.
+        /// query control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl searchTerm;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl query;
+
         /// <summary>
         /// results control.
         /// </summary>

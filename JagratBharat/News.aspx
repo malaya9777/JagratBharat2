@@ -198,6 +198,8 @@
     <meta property="og:title" runat="server" id="og_title" />
     <meta property="og:description" runat="server" id="og_description" />
     <meta property="og:image" itemprop="image" runat="server" id="og_image" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" />
     <meta property="og:type" content="website" runat="server" id="og_type" />
     <meta property="og:updated_time" runat="server" id="og_updated_time" />
 </asp:Content>

@@ -22,7 +22,7 @@ namespace JagratBharat
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="JagratBharat")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="jagragbz_db")]
 	public partial class dbDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -36,15 +36,18 @@ namespace JagratBharat
     partial void InsertPost_Paragraph(Post_Paragraph instance);
     partial void UpdatePost_Paragraph(Post_Paragraph instance);
     partial void DeletePost_Paragraph(Post_Paragraph instance);
-    partial void InsertPost(Post instance);
-    partial void UpdatePost(Post instance);
-    partial void DeletePost(Post instance);
     partial void InsertZodiac(Zodiac instance);
     partial void UpdateZodiac(Zodiac instance);
     partial void DeleteZodiac(Zodiac instance);
     partial void InsertHoroscope(Horoscope instance);
     partial void UpdateHoroscope(Horoscope instance);
     partial void DeleteHoroscope(Horoscope instance);
+    partial void InsertAdvertisement(Advertisement instance);
+    partial void UpdateAdvertisement(Advertisement instance);
+    partial void DeleteAdvertisement(Advertisement instance);
+    partial void InsertPost(Post instance);
+    partial void UpdatePost(Post instance);
+    partial void DeletePost(Post instance);
     #endregion
 		
 		public dbDataContext() : 
@@ -93,14 +96,6 @@ namespace JagratBharat
 			}
 		}
 		
-		public System.Data.Linq.Table<Post> Posts
-		{
-			get
-			{
-				return this.GetTable<Post>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Zodiac> Zodiacs
 		{
 			get
@@ -114,6 +109,22 @@ namespace JagratBharat
 			get
 			{
 				return this.GetTable<Horoscope>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Advertisement> Advertisements
+		{
+			get
+			{
+				return this.GetTable<Advertisement>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Post> Posts
+		{
+			get
+			{
+				return this.GetTable<Post>();
 			}
 		}
 	}
@@ -289,284 +300,6 @@ namespace JagratBharat
 					this._Paragraphs = value;
 					this.SendPropertyChanged("Paragraphs");
 					this.OnParagraphsChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Posts")]
-	public partial class Post : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _HeadLine;
-		
-		private System.Nullable<int> _Category;
-		
-		private System.Nullable<System.DateTime> _NewsDate;
-		
-		private System.Data.Linq.Binary _Image;
-		
-		private string _VideoPath;
-		
-		private System.Nullable<System.DateTime> _PostedOn;
-		
-		private System.Nullable<int> _PostedBy;
-		
-		private System.Nullable<bool> _Submitted;
-		
-		private System.Nullable<bool> _SelectedScroller;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnHeadLineChanging(string value);
-    partial void OnHeadLineChanged();
-    partial void OnCategoryChanging(System.Nullable<int> value);
-    partial void OnCategoryChanged();
-    partial void OnNewsDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnNewsDateChanged();
-    partial void OnImageChanging(System.Data.Linq.Binary value);
-    partial void OnImageChanged();
-    partial void OnVideoPathChanging(string value);
-    partial void OnVideoPathChanged();
-    partial void OnPostedOnChanging(System.Nullable<System.DateTime> value);
-    partial void OnPostedOnChanged();
-    partial void OnPostedByChanging(System.Nullable<int> value);
-    partial void OnPostedByChanged();
-    partial void OnSubmittedChanging(System.Nullable<bool> value);
-    partial void OnSubmittedChanged();
-    partial void OnSelectedScrollerChanging(System.Nullable<bool> value);
-    partial void OnSelectedScrollerChanged();
-    #endregion
-		
-		public Post()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HeadLine", DbType="NVarChar(200)")]
-		public string HeadLine
-		{
-			get
-			{
-				return this._HeadLine;
-			}
-			set
-			{
-				if ((this._HeadLine != value))
-				{
-					this.OnHeadLineChanging(value);
-					this.SendPropertyChanging();
-					this._HeadLine = value;
-					this.SendPropertyChanged("HeadLine");
-					this.OnHeadLineChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Category", DbType="Int")]
-		public System.Nullable<int> Category
-		{
-			get
-			{
-				return this._Category;
-			}
-			set
-			{
-				if ((this._Category != value))
-				{
-					this.OnCategoryChanging(value);
-					this.SendPropertyChanging();
-					this._Category = value;
-					this.SendPropertyChanged("Category");
-					this.OnCategoryChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NewsDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> NewsDate
-		{
-			get
-			{
-				return this._NewsDate;
-			}
-			set
-			{
-				if ((this._NewsDate != value))
-				{
-					this.OnNewsDateChanging(value);
-					this.SendPropertyChanging();
-					this._NewsDate = value;
-					this.SendPropertyChanged("NewsDate");
-					this.OnNewsDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary Image
-		{
-			get
-			{
-				return this._Image;
-			}
-			set
-			{
-				if ((this._Image != value))
-				{
-					this.OnImageChanging(value);
-					this.SendPropertyChanging();
-					this._Image = value;
-					this.SendPropertyChanged("Image");
-					this.OnImageChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VideoPath", DbType="VarChar(300)")]
-		public string VideoPath
-		{
-			get
-			{
-				return this._VideoPath;
-			}
-			set
-			{
-				if ((this._VideoPath != value))
-				{
-					this.OnVideoPathChanging(value);
-					this.SendPropertyChanging();
-					this._VideoPath = value;
-					this.SendPropertyChanged("VideoPath");
-					this.OnVideoPathChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostedOn", DbType="DateTime")]
-		public System.Nullable<System.DateTime> PostedOn
-		{
-			get
-			{
-				return this._PostedOn;
-			}
-			set
-			{
-				if ((this._PostedOn != value))
-				{
-					this.OnPostedOnChanging(value);
-					this.SendPropertyChanging();
-					this._PostedOn = value;
-					this.SendPropertyChanged("PostedOn");
-					this.OnPostedOnChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostedBy", DbType="Int")]
-		public System.Nullable<int> PostedBy
-		{
-			get
-			{
-				return this._PostedBy;
-			}
-			set
-			{
-				if ((this._PostedBy != value))
-				{
-					this.OnPostedByChanging(value);
-					this.SendPropertyChanging();
-					this._PostedBy = value;
-					this.SendPropertyChanged("PostedBy");
-					this.OnPostedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Submitted", DbType="Bit")]
-		public System.Nullable<bool> Submitted
-		{
-			get
-			{
-				return this._Submitted;
-			}
-			set
-			{
-				if ((this._Submitted != value))
-				{
-					this.OnSubmittedChanging(value);
-					this.SendPropertyChanging();
-					this._Submitted = value;
-					this.SendPropertyChanged("Submitted");
-					this.OnSubmittedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SelectedScroller", DbType="Bit")]
-		public System.Nullable<bool> SelectedScroller
-		{
-			get
-			{
-				return this._SelectedScroller;
-			}
-			set
-			{
-				if ((this._SelectedScroller != value))
-				{
-					this.OnSelectedScrollerChanging(value);
-					this.SendPropertyChanging();
-					this._SelectedScroller = value;
-					this.SendPropertyChanged("SelectedScroller");
-					this.OnSelectedScrollerChanged();
 				}
 			}
 		}
@@ -835,6 +568,586 @@ namespace JagratBharat
 					this._Horoscope_English = value;
 					this.SendPropertyChanged("Horoscope_English");
 					this.OnHoroscope_EnglishChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Advertisement")]
+	public partial class Advertisement : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Headline;
+		
+		private string _AddContent;
+		
+		private string _ImagePath;
+		
+		private string _ThumbnailPath;
+		
+		private System.Nullable<System.DateTime> _PublishedOn;
+		
+		private System.Nullable<System.DateTime> _PublishedTill;
+		
+		private string _PhoneNumber;
+		
+		private System.Nullable<bool> _Status;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnHeadlineChanging(string value);
+    partial void OnHeadlineChanged();
+    partial void OnAddContentChanging(string value);
+    partial void OnAddContentChanged();
+    partial void OnImagePathChanging(string value);
+    partial void OnImagePathChanged();
+    partial void OnThumbnailPathChanging(string value);
+    partial void OnThumbnailPathChanged();
+    partial void OnPublishedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnPublishedOnChanged();
+    partial void OnPublishedTillChanging(System.Nullable<System.DateTime> value);
+    partial void OnPublishedTillChanged();
+    partial void OnPhoneNumberChanging(string value);
+    partial void OnPhoneNumberChanged();
+    partial void OnStatusChanging(System.Nullable<bool> value);
+    partial void OnStatusChanged();
+    #endregion
+		
+		public Advertisement()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Headline", DbType="VarChar(200)")]
+		public string Headline
+		{
+			get
+			{
+				return this._Headline;
+			}
+			set
+			{
+				if ((this._Headline != value))
+				{
+					this.OnHeadlineChanging(value);
+					this.SendPropertyChanging();
+					this._Headline = value;
+					this.SendPropertyChanged("Headline");
+					this.OnHeadlineChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddContent", DbType="NVarChar(MAX)")]
+		public string AddContent
+		{
+			get
+			{
+				return this._AddContent;
+			}
+			set
+			{
+				if ((this._AddContent != value))
+				{
+					this.OnAddContentChanging(value);
+					this.SendPropertyChanging();
+					this._AddContent = value;
+					this.SendPropertyChanged("AddContent");
+					this.OnAddContentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImagePath", DbType="VarChar(500)")]
+		public string ImagePath
+		{
+			get
+			{
+				return this._ImagePath;
+			}
+			set
+			{
+				if ((this._ImagePath != value))
+				{
+					this.OnImagePathChanging(value);
+					this.SendPropertyChanging();
+					this._ImagePath = value;
+					this.SendPropertyChanged("ImagePath");
+					this.OnImagePathChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThumbnailPath", DbType="VarChar(500)")]
+		public string ThumbnailPath
+		{
+			get
+			{
+				return this._ThumbnailPath;
+			}
+			set
+			{
+				if ((this._ThumbnailPath != value))
+				{
+					this.OnThumbnailPathChanging(value);
+					this.SendPropertyChanging();
+					this._ThumbnailPath = value;
+					this.SendPropertyChanged("ThumbnailPath");
+					this.OnThumbnailPathChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PublishedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PublishedOn
+		{
+			get
+			{
+				return this._PublishedOn;
+			}
+			set
+			{
+				if ((this._PublishedOn != value))
+				{
+					this.OnPublishedOnChanging(value);
+					this.SendPropertyChanging();
+					this._PublishedOn = value;
+					this.SendPropertyChanged("PublishedOn");
+					this.OnPublishedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PublishedTill", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PublishedTill
+		{
+			get
+			{
+				return this._PublishedTill;
+			}
+			set
+			{
+				if ((this._PublishedTill != value))
+				{
+					this.OnPublishedTillChanging(value);
+					this.SendPropertyChanging();
+					this._PublishedTill = value;
+					this.SendPropertyChanged("PublishedTill");
+					this.OnPublishedTillChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNumber", DbType="VarChar(50)")]
+		public string PhoneNumber
+		{
+			get
+			{
+				return this._PhoneNumber;
+			}
+			set
+			{
+				if ((this._PhoneNumber != value))
+				{
+					this.OnPhoneNumberChanging(value);
+					this.SendPropertyChanging();
+					this._PhoneNumber = value;
+					this.SendPropertyChanged("PhoneNumber");
+					this.OnPhoneNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Bit")]
+		public System.Nullable<bool> Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Posts")]
+	public partial class Post : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _HeadLine;
+		
+		private System.Nullable<int> _Category;
+		
+		private System.Nullable<System.DateTime> _NewsDate;
+		
+		private System.Data.Linq.Binary _Image;
+		
+		private string _VideoPath;
+		
+		private System.Nullable<System.DateTime> _PostedOn;
+		
+		private System.Nullable<int> _PostedBy;
+		
+		private System.Nullable<bool> _Submitted;
+		
+		private System.Nullable<bool> _SelectedScroller;
+		
+		private string _ImagePath;
+		
+		private string _ThumbnailPath;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnHeadLineChanging(string value);
+    partial void OnHeadLineChanged();
+    partial void OnCategoryChanging(System.Nullable<int> value);
+    partial void OnCategoryChanged();
+    partial void OnNewsDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnNewsDateChanged();
+    partial void OnImageChanging(System.Data.Linq.Binary value);
+    partial void OnImageChanged();
+    partial void OnVideoPathChanging(string value);
+    partial void OnVideoPathChanged();
+    partial void OnPostedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnPostedOnChanged();
+    partial void OnPostedByChanging(System.Nullable<int> value);
+    partial void OnPostedByChanged();
+    partial void OnSubmittedChanging(System.Nullable<bool> value);
+    partial void OnSubmittedChanged();
+    partial void OnSelectedScrollerChanging(System.Nullable<bool> value);
+    partial void OnSelectedScrollerChanged();
+    partial void OnImagePathChanging(string value);
+    partial void OnImagePathChanged();
+    partial void OnThumbnailPathChanging(string value);
+    partial void OnThumbnailPathChanged();
+    #endregion
+		
+		public Post()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HeadLine", DbType="NVarChar(200)")]
+		public string HeadLine
+		{
+			get
+			{
+				return this._HeadLine;
+			}
+			set
+			{
+				if ((this._HeadLine != value))
+				{
+					this.OnHeadLineChanging(value);
+					this.SendPropertyChanging();
+					this._HeadLine = value;
+					this.SendPropertyChanged("HeadLine");
+					this.OnHeadLineChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Category", DbType="Int")]
+		public System.Nullable<int> Category
+		{
+			get
+			{
+				return this._Category;
+			}
+			set
+			{
+				if ((this._Category != value))
+				{
+					this.OnCategoryChanging(value);
+					this.SendPropertyChanging();
+					this._Category = value;
+					this.SendPropertyChanged("Category");
+					this.OnCategoryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NewsDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NewsDate
+		{
+			get
+			{
+				return this._NewsDate;
+			}
+			set
+			{
+				if ((this._NewsDate != value))
+				{
+					this.OnNewsDateChanging(value);
+					this.SendPropertyChanging();
+					this._NewsDate = value;
+					this.SendPropertyChanged("NewsDate");
+					this.OnNewsDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Image
+		{
+			get
+			{
+				return this._Image;
+			}
+			set
+			{
+				if ((this._Image != value))
+				{
+					this.OnImageChanging(value);
+					this.SendPropertyChanging();
+					this._Image = value;
+					this.SendPropertyChanged("Image");
+					this.OnImageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VideoPath", DbType="VarChar(300)")]
+		public string VideoPath
+		{
+			get
+			{
+				return this._VideoPath;
+			}
+			set
+			{
+				if ((this._VideoPath != value))
+				{
+					this.OnVideoPathChanging(value);
+					this.SendPropertyChanging();
+					this._VideoPath = value;
+					this.SendPropertyChanged("VideoPath");
+					this.OnVideoPathChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PostedOn
+		{
+			get
+			{
+				return this._PostedOn;
+			}
+			set
+			{
+				if ((this._PostedOn != value))
+				{
+					this.OnPostedOnChanging(value);
+					this.SendPropertyChanging();
+					this._PostedOn = value;
+					this.SendPropertyChanged("PostedOn");
+					this.OnPostedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostedBy", DbType="Int")]
+		public System.Nullable<int> PostedBy
+		{
+			get
+			{
+				return this._PostedBy;
+			}
+			set
+			{
+				if ((this._PostedBy != value))
+				{
+					this.OnPostedByChanging(value);
+					this.SendPropertyChanging();
+					this._PostedBy = value;
+					this.SendPropertyChanged("PostedBy");
+					this.OnPostedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Submitted", DbType="Bit")]
+		public System.Nullable<bool> Submitted
+		{
+			get
+			{
+				return this._Submitted;
+			}
+			set
+			{
+				if ((this._Submitted != value))
+				{
+					this.OnSubmittedChanging(value);
+					this.SendPropertyChanging();
+					this._Submitted = value;
+					this.SendPropertyChanged("Submitted");
+					this.OnSubmittedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SelectedScroller", DbType="Bit")]
+		public System.Nullable<bool> SelectedScroller
+		{
+			get
+			{
+				return this._SelectedScroller;
+			}
+			set
+			{
+				if ((this._SelectedScroller != value))
+				{
+					this.OnSelectedScrollerChanging(value);
+					this.SendPropertyChanging();
+					this._SelectedScroller = value;
+					this.SendPropertyChanged("SelectedScroller");
+					this.OnSelectedScrollerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImagePath", DbType="VarChar(500)")]
+		public string ImagePath
+		{
+			get
+			{
+				return this._ImagePath;
+			}
+			set
+			{
+				if ((this._ImagePath != value))
+				{
+					this.OnImagePathChanging(value);
+					this.SendPropertyChanging();
+					this._ImagePath = value;
+					this.SendPropertyChanged("ImagePath");
+					this.OnImagePathChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThumbnailPath", DbType="VarChar(500)")]
+		public string ThumbnailPath
+		{
+			get
+			{
+				return this._ThumbnailPath;
+			}
+			set
+			{
+				if ((this._ThumbnailPath != value))
+				{
+					this.OnThumbnailPathChanging(value);
+					this.SendPropertyChanging();
+					this._ThumbnailPath = value;
+					this.SendPropertyChanged("ThumbnailPath");
+					this.OnThumbnailPathChanged();
 				}
 			}
 		}

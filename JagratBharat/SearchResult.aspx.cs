@@ -13,9 +13,17 @@ namespace JagratBharat
         {
             if (!IsPostBack)
             {
-                string serachTerm = Request.QueryString["search"];
-                FindResult(serachTerm);
-                searchTerm.InnerText = "Showing Results for \"" + serachTerm + "\"";
+                string searchTerm = Request.QueryString["search"];
+                if(searchTerm != "" && searchTerm != null)
+                {
+                    FindResult(searchTerm);
+                    query.InnerText = "Showing Results for \"" + searchTerm.Replace("+", " ") + "\"";
+                }
+                else
+                {
+                    Response.Redirect("/");
+                }
+                
             }
         }
         private void FindResult(string searchTerm)
@@ -23,7 +31,7 @@ namespace JagratBharat
             var posts = new List<Post>();
             using (dbDataContext db = new dbDataContext())
             {
-                var splitedSearch = searchTerm.Split(' ');
+                var splitedSearch = searchTerm.Split('+');
                 foreach (var s in splitedSearch)
                 {
                     if (s != string.Empty)
@@ -40,7 +48,7 @@ namespace JagratBharat
             string empty = "";
             foreach (var s in posts.Distinct().OrderByDescending(n => n.NewsDate).Take(10))
             {
-                empty += "<div class='result'><a href=News.aspx?ID=" + globalMethods.EncodeID(s.Id) + "><div class='img' style=\"background-image:url('getImage.ashx?PostID=" + s.Id + "&Size=thumbnail')\"> </div> <h5>" + s.HeadLine + "</h5></a></div>";
+                empty += "<img class='img' data-src='"+s.ThumbnailPath+ "' onclick='window.location=\"News.aspx?ID=" + globalMethods.EncodeID(s.Id) + "\"'><h3 onclick='window.location=\"News.aspx?ID=" + globalMethods.EncodeID(s.Id) + "\"'>" + s.HeadLine + "</h3>";
 
             }
             results.InnerHtml = empty == string.Empty ? "<div class='result'><a href='#'>No results found!<div class='img'></div><h5></h5></a></div>" : empty;

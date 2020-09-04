@@ -9,12 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin", "Admin\Admin.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JagratBharatNewsMVC", "JagratBharatNewsMVC\JagratBharatNewsMVC.csproj", "{88EB54FB-3E05-4107-B5A0-12C5FD2A3B9B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DBDetails", "DBDetails", "{08A30347-D2ED-4599-B635-BF10031042D0}"
-	ProjectSection(SolutionItems) = preProject
-		C:\Users\monty\Desktop\SQl\CreateAdvertisementTable.sql = C:\Users\monty\Desktop\SQl\CreateAdvertisementTable.sql
-		C:\Users\monty\Desktop\SQl\Posts.sql = C:\Users\monty\Desktop\SQl\Posts.sql
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JagratBharat {
-    
-    
-    public partial class CategoryWiseNews {
-        
+namespace JagratBharat
+{
+
+
+    public partial class CategoryWiseNews
+    {
+
         /// <summary>
         /// heading control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl heading;
-        
+
         /// <summary>
         /// subnews_container control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl subnews_container;
-        
+
         /// <summary>
         /// ads control.
         /// </summary>

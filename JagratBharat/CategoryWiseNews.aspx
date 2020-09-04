@@ -94,10 +94,11 @@
             </section>
         </div>
     </main>
-
     <script>
         function redirect(path) {
             window.location = path;
         };
     </script>
 </asp:Content>
+     
+

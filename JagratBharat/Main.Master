@@ -421,6 +421,15 @@
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         </asp:ContentPlaceHolder>
 
+        <asp:ContentPlaceHolder ID="AdvertisementPlaceholder" runat="server">
+            <div class="container">
+                <span>Advertisement</span>
+                <div class="advertisement" id="advertisement" runat="server">
+                </div>
+            </div>
+        </asp:ContentPlaceHolder>
+
+
     </form>
     <footer>
         <div class="footer-info container">
@@ -438,7 +447,7 @@
 
 
 
-    <%-- Google Ads Script --%>
+
 
     <script>
         let headerbottom = document.getElementById('header-bottom');
@@ -454,7 +463,7 @@
 
         function search_result() {
             let searchBox = document.getElementById("searchText");
-            window.location = "SearchResult.aspx?search=" + searchBox.value.replace(new RegExp(" ","g"),'+' );
+            window.location = "SearchResult.aspx?search=" + searchBox.value.replace(new RegExp(" ", "g"), '+');
         };
         function goHome() {
             window.location = "Default.aspx";

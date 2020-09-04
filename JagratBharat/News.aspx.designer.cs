@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JagratBharat {
-    
-    
-    public partial class News {
-        
+namespace JagratBharat
+{
+
+
+    public partial class News
+    {
+
         /// <summary>
         /// og_site_name control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl og_site_name;
-        
+
         /// <summary>
         /// og_url control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl og_url;
-        
+
         /// <summary>
         /// og_title control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl og_title;
-        
+
         /// <summary>
         /// og_description control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl og_description;
-        
+
         /// <summary>
         /// og_image control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl og_image;
-        
+
         /// <summary>
         /// og_type control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl og_type;
-        
+
         /// <summary>
         /// og_updated_time control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl og_updated_time;
-        
+
         /// <summary>
         /// heading control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl heading;
-        
+
         /// <summary>
         /// headImage control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlImage headImage;
-        
+
         /// <summary>
         /// PostHeader control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl PostHeader;
-        
+
         /// <summary>
         /// ads1 control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ads1;
-        
+
         /// <summary>
         /// category control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl category;
-        
+
         /// <summary>
         /// info control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl info;
-        
+
         /// <summary>
         /// whatsaapbutton control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor whatsaapbutton;
-        
+
         /// <summary>
         /// twitterbutton control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor twitterbutton;
-        
+
         /// <summary>
         /// PostContent control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl PostContent;
-        
+
         /// <summary>
         /// A1 control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A1;
-        
+
         /// <summary>
         /// A2 control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A2;
-        
+
         /// <summary>
         /// subnews_container control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace JagratBharat {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl subnews_container;
-        
+
         /// <summary>
         /// ads control.
         /// </summary>

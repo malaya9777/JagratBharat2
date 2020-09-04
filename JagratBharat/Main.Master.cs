@@ -17,9 +17,16 @@ namespace JagratBharat
                 {
                     var categories = db.Post_Categories.ToList();
                     loadCategory(categories);
+                    loadAdvertisement();
                 }
             }
         }
+
+        private void loadAdvertisement()
+        {
+            
+        }
+
         private void loadCategory(List<Post_Category> categories)
         {
 

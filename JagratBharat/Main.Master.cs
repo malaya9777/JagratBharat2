@@ -24,7 +24,17 @@ namespace JagratBharat
 
         private void loadAdvertisement()
         {
-            
+            using(dbDataContext db = new dbDataContext())
+            {
+                string htmlData = "";
+                foreach(var ad in db.Advertisements.Where(n=> n.Status==true).OrderByDescending(n => n.Id).Take(4))
+                {
+                    htmlData += $"<div class='advertisement' onclick='windown.location=\"tel:{ad.PhoneNumber}\"' style='background-image:url({ad.ThumbnailPath});'><a href='tel:{ad.PhoneNumber}' class='callNow'>Call Now</a></div>";
+                }
+                advertimement_top.InnerHtml = htmlData;
+                advertisement_bottom.InnerHtml = htmlData;
+            }
+           
         }
 
         private void loadCategory(List<Post_Category> categories)

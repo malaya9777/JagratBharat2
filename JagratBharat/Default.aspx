@@ -55,6 +55,7 @@
             .top-news article {
                 -ms-grid-columns: auto;
                 grid-template-columns: auto;
+                padding:10px;
             }
         }
 
@@ -390,7 +391,6 @@
                     <div class="fb-comments" data-href="https://www.jagratbharatnews.in/" data-width="100%" data-numposts="10"></div>
                 </div>
             </div>
-
         </section>
         <section class="extra">
             <div class="lable">

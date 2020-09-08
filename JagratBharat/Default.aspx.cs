@@ -56,13 +56,13 @@ namespace JagratBharat
 
         private void loadMoreLinks()
         {
-            var extraPosts = db.Posts.Where(n => n.Submitted == true).OrderByDescending(n => n.Id).Skip(37).Take(50);
-            var linkString = "";
-            foreach (var p in extraPosts)
-            {
-                linkString += "<a href=\"News.aspx?ID=" + globalMethods.EncodeID(p.Id) + "\">" + p.HeadLine + "</a>";
-            }
-            moreLinks.InnerHtml = linkString;
+            //var extraPosts = db.Posts.Where(n => n.Submitted == true).OrderByDescending(n => n.Id).Skip(37).Take(50);
+            //var linkString = "";
+            //foreach (var p in extraPosts)
+            //{
+            //    linkString += "<a href=\"News.aspx?ID=" + globalMethods.EncodeID(p.Id) + "\">" + p.HeadLine + "</a>";
+            //}
+            //moreLinks.InnerHtml = linkString;
         }
 
         private void loadSubNews()
@@ -129,7 +129,7 @@ namespace JagratBharat
         public void loadScroller()
         {
             string scrollerText = "";
-            foreach (var i in db.Posts.Where(n => n.Submitted==true && (DateTime.Now-n.PostedOn)<TimeSpan.FromDays(8)))
+            foreach (var i in db.Posts.Where(n => n.Submitted==true && (DateTime.Now-n.PostedOn)<TimeSpan.FromDays(2)))
             {
                 scrollerText += "<a href='News.aspx?ID=" + globalMethods.EncodeID(i.Id) + "' target='_blank'>" + i.HeadLine + "</a> &#8734; ";
             }

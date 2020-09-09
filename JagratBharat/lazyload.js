@@ -12,9 +12,6 @@ function preloadImage(img) {
         img.src = newImage.src;
 
     };
-
-
-
 }
 
 

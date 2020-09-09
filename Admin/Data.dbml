@@ -48,7 +48,6 @@
       <Column Name="HeadLine" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="Category" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NewsDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Image" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="ImagePath" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="ThumbnailPath" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="VideoPath" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />

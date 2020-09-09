@@ -18,7 +18,6 @@ namespace Admin
             imgPreview.Visible = false;
             if (!IsPostBack)
             {
-                Session.Remove("PostID");
                 loadCategories();
                 loadPostGrid();
                 checkPreviliage(GlobalMethods.getUserRole(Convert.ToInt32(Session["LoginID"])));
@@ -94,10 +93,10 @@ namespace Admin
         {
             Post post;
             bool recordExists;
-            if (Session["PostID"] != null)
-            {
-                int ID = Convert.ToInt32(Session["PostID"]);
-                post = db.Posts.Where(n => n.Id == ID).SingleOrDefault();
+            var sessionPostID = Convert.ToInt32(Session["PostID"]);
+            if (btnSubmit.Text== "Update" && sessionPostID!=0)
+            {                
+                post = db.Posts.Where(n => n.Id == sessionPostID).SingleOrDefault();
                 recordExists = true;
             }
             else
@@ -197,6 +196,7 @@ namespace Admin
             var PostID = Convert.ToInt32(e.CommandArgument);
             if (e.CommandName == "editPost")
             {
+                Session["PostID"] = PostID;
                 loadDatatoEdit(PostID);
             }
             else if (e.CommandName == "sendPost")
@@ -213,7 +213,7 @@ namespace Admin
         {
             var post = db.Posts.Where(n => n.Id == postID).SingleOrDefault();
             try
-            {               
+            {
                 db.Posts.DeleteOnSubmit(post);
                 db.SubmitChanges();
                 loadPostGrid();
@@ -223,7 +223,7 @@ namespace Admin
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(),"Error", $"alert('{ex.Message}')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Error", $"alert('{ex.Message}')", true);
             }
         }
 
@@ -248,7 +248,7 @@ namespace Admin
         // Load Data to Edit Panel
         private void loadDatatoEdit(int postID)
         {
-            Session["PostID"] = postID;
+
             btnSubmit.Text = "Update";
             var post = db.Posts.Where(n => n.Id == postID).FirstOrDefault();
             ddlCategory.SelectedValue = post.Category.ToString();
@@ -257,6 +257,7 @@ namespace Admin
             txtBody.Text = loadParagraphs(postID);
             videoEmbed.Text = post.VideoPath;
             loadImagePreview(post);
+
         }
 
 

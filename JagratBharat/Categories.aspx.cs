@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,6 +10,7 @@ namespace JagratBharat
 {
     public partial class Categories : System.Web.UI.Page
     {
+        string ImageHost = ConfigurationManager.AppSettings["ImageHost"];
         dbDataContext db = new dbDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,7 +40,7 @@ namespace JagratBharat
                         foreach (var c in db.Posts.Where(n => n.Category == r.Id && n.Submitted == true).OrderByDescending(n => n.NewsDate).Take(10))
                         {
                             cards += "<div class='card' onclick='redirect(\"News.aspx?ID=" + globalMethods.EncodeID(c.Id) + "\");'>" +
-                                "<img src=\"defaults/default.png\" data-src='" + c.ThumbnailPath + "' alt=''/>" +
+                                "<img src=\"defaults/default.png\" data-src='" + ImageHost + c.ThumbnailPath + "' alt=''/>" +
                                 "<h5>" + globalMethods.Truncate(c.HeadLine, 30) + "</h5>" +
                                 "</div>";
                         }

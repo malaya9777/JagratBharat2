@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,6 +10,7 @@ namespace JagratBharat
 {
     public partial class Default : System.Web.UI.Page
     {
+        string ImageHost = ConfigurationManager.AppSettings["ImageHost"];
         dbDataContext db = new dbDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -16,7 +18,7 @@ namespace JagratBharat
             {
 
 
-                loadScroller();
+               
                 loadTopDiv(db.Posts.Where(n => n.Submitted == true).OrderByDescending(n => n.Id).FirstOrDefault());
                 loadTopVid(db.Posts.Where(n => n.Submitted == true && n.VideoPath != null && n.VideoPath != string.Empty).OrderByDescending(n => n.Id).FirstOrDefault());
                 loadSubNews();
@@ -75,7 +77,7 @@ namespace JagratBharat
                 foreach (var p in selectedPost)
                 {
                     innerHTML += "<article class=\"subnews\"><div class=\"subnews-image\">" +
-                                "<img src=\"defaults/default.png\" data-src=\"" + p.ThumbnailPath + "\" alt =\"" + p.HeadLine + "\" style='min-height:300px;'>" +
+                                "<img src=\"defaults/default.png\" data-src=\"" +ImageHost+ p.ThumbnailPath + "\" alt =\"" + p.HeadLine + "\" style='min-height:300px;'>" +
                                  "<div class=\"info\"> <p>" + db.Post_Categories.Where(n => n.Id == p.Category).Select(n => n.Name).FirstOrDefault() + "</p>" +
                                     "<p>" + Convert.ToDateTime(p.NewsDate).ToString("dd MMMM yyyy") + "</p></div></div><div class=\"subnews-info\"><h1>" + p.HeadLine + "</h1>" +
                                     "<button class=\"blue-button\" onclick='window.open(\"News.aspx?ID=" + globalMethods.EncodeID(p.Id) + "\")'>Read More</button></div></article>";
@@ -91,7 +93,7 @@ namespace JagratBharat
             using (dbDataContext db = new dbDataContext())
             {
                 categories = db.Post_Categories.ToList();
-                topImgae.Src = post.ImagePath;
+                topImgae.Src = ImageHost+ post.ImagePath;
                 topHeadline.InnerText = post.HeadLine;
                 topCategory.InnerText = categories.Where(n => n.Id == post.Category).Select(n => n.Name).FirstOrDefault();
                 topDate.InnerText = Convert.ToDateTime(post.NewsDate).ToString("dd MMMM yyyy");
@@ -126,15 +128,6 @@ namespace JagratBharat
             }
         }
 
-        public void loadScroller()
-        {
-            string scrollerText = "";
-            foreach (var i in db.Posts.Where(n => n.Submitted==true && (DateTime.Now-n.PostedOn)<TimeSpan.FromDays(2)))
-            {
-                scrollerText += "<a href='News.aspx?ID=" + globalMethods.EncodeID(i.Id) + "' target='_blank'>" + i.HeadLine + "</a> &#8734; ";
-            }
-            marquee.InnerHtml = scrollerText;
-
-        }
+        
     }
 }

@@ -98,8 +98,6 @@
     <Content Include="Preview.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Signout.aspx" />
-    <Content Include="SQL_Script\CreateAdvertisementTable.sql" />
-    <Content Include="SQL_Script\Posts.sql" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

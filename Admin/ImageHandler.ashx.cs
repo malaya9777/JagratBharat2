@@ -22,12 +22,12 @@ namespace Admin
                 var post = db.Posts.Where(n => n.Id == postID).SingleOrDefault();
                 if (post != null)
                 {
-                    var img = GlobalMethods.BinaryToImage(post.Image.ToArray());
-                    var imgArray = GetBytesFromImage(generateImage(img, Size));
-                    context.Response.ContentType = "image/jpg";
-                    context.Response.OutputStream.Write(imgArray, 0, imgArray.Length);
-                    context.Response.Flush();
-                    context.Response.End();
+                    //var img = GlobalMethods.BinaryToImage(post.Image.ToArray());
+                    //var imgArray = GetBytesFromImage(generateImage(img, Size));
+                    //context.Response.ContentType = "image/jpg";
+                    //context.Response.OutputStream.Write(imgArray, 0, imgArray.Length);
+                    //context.Response.Flush();
+                    //context.Response.End();
                 }
 
             }

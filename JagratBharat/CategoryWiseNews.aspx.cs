@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,6 +11,7 @@ namespace JagratBharat
 {
     public partial class CategoryWiseNews : System.Web.UI.Page
     {
+        string ImageHost = ConfigurationManager.AppSettings["ImageHost"];
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -37,7 +39,7 @@ namespace JagratBharat
                 foreach (var c in posts)
                 {
                     cards += "<article class=\"subnews\"><div class=\"subnews-image\">" +
-                                "<img src=\"defaults/default.png\" data-src=\""+c.ThumbnailPath+"\" alt =\"" + c.HeadLine + "\" style='min-height:300px;'>" +
+                                "<img src=\"defaults/default.png\" data-src=\""+ ImageHost+c.ThumbnailPath+"\" alt =\"" + c.HeadLine + "\" style='min-height:300px;'>" +
                                  "<div class=\"info\"> <p>" + db.Post_Categories.Where(n => n.Id == c.Category).Select(n => n.Name).FirstOrDefault() + "</p>" +
                                     "<p>" + Convert.ToDateTime(c.NewsDate).ToString("dd MMMM yyyy") + "</p></div></div><div class=\"subnews-info\"><h1>" + c.HeadLine + "</h1>" +
                                     "<button class=\"blue-button\" onclick='window.open(\"News.aspx?ID=" + globalMethods.EncodeID(c.Id) + "\")'>Read More</button></div></article>";

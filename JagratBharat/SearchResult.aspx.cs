@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,6 +10,7 @@ namespace JagratBharat
 {
     public partial class SearchResult : System.Web.UI.Page
     {
+        string ImageHost = ConfigurationManager.AppSettings["ImageHost"];
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -48,7 +50,7 @@ namespace JagratBharat
             string empty = "";
             foreach (var s in posts.Distinct().OrderByDescending(n => n.NewsDate).Take(10))
             {
-                empty += "<img class='img' data-src='"+s.ThumbnailPath+ "' onclick='window.location=\"News.aspx?ID=" + globalMethods.EncodeID(s.Id) + "\"'><h3 onclick='window.location=\"News.aspx?ID=" + globalMethods.EncodeID(s.Id) + "\"'>" + s.HeadLine + "</h3>";
+                empty += "<img class='img' data-src='"+ImageHost+s.ThumbnailPath+ "' onclick='window.location=\"News.aspx?ID=" + globalMethods.EncodeID(s.Id) + "\"'><h3 onclick='window.location=\"News.aspx?ID=" + globalMethods.EncodeID(s.Id) + "\"'>" + s.HeadLine + "</h3>";
 
             }
             results.InnerHtml = empty == string.Empty ? "<div class='result'><a href='#'>No results found!<div class='img'></div><h5></h5></a></div>" : empty;

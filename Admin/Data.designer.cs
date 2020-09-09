@@ -894,8 +894,6 @@ namespace Admin
 		
 		private System.Nullable<System.DateTime> _NewsDate;
 		
-		private System.Data.Linq.Binary _Image;
-		
 		private string _ImagePath;
 		
 		private string _ThumbnailPath;
@@ -922,8 +920,6 @@ namespace Admin
     partial void OnCategoryChanged();
     partial void OnNewsDateChanging(System.Nullable<System.DateTime> value);
     partial void OnNewsDateChanged();
-    partial void OnImageChanging(System.Data.Linq.Binary value);
-    partial void OnImageChanged();
     partial void OnImagePathChanging(string value);
     partial void OnImagePathChanged();
     partial void OnThumbnailPathChanging(string value);
@@ -1021,26 +1017,6 @@ namespace Admin
 					this._NewsDate = value;
 					this.SendPropertyChanged("NewsDate");
 					this.OnNewsDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary Image
-		{
-			get
-			{
-				return this._Image;
-			}
-			set
-			{
-				if ((this._Image != value))
-				{
-					this.OnImageChanging(value);
-					this.SendPropertyChanging();
-					this._Image = value;
-					this.SendPropertyChanged("Image");
-					this.OnImageChanged();
 				}
 			}
 		}

@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace JagratBharat
-{
+{    
     public partial class News : System.Web.UI.Page
     {
+        string ImageHost = ConfigurationManager.AppSettings["ImageHost"];
         dbDataContext db = new dbDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,7 +43,7 @@ namespace JagratBharat
                 PostHeader.InnerText = post.HeadLine;
                 category.InnerText = globalMethods.getCategoryName(post.Category);
                 info.InnerText = post.NewsDate.Value.ToLongDateString();
-                loadImageFromPath(post.ImagePath);
+                loadImageFromPath(ImageHost+post.ImagePath);
                 loadParagraph(paragraphs, loadVideo(post.VideoPath));
                 loadCards(post.Category, post.Id);
                 loadMetas(post);
@@ -66,9 +68,9 @@ namespace JagratBharat
             og_title.Attributes["content"] = post.HeadLine;
             og_description.Attributes["content"] = db.Post_Paragraphs.Where(n => n.PostID == post.Id).Select(n => n.Paragraphs).FirstOrDefault();
 
-            var path = new Uri(Page.Request.Url, "getImage.ashx");
+            
             var shareURL = new Uri(Page.Request.Url, Request.RawUrl).ToString();
-            og_image.Attributes["content"] = post.ImagePath;
+            og_image.Attributes["content"] = ImageHost+post.ImagePath;
             og_url.Attributes["content"] = shareURL;
 
 
@@ -84,7 +86,7 @@ namespace JagratBharat
                 foreach (var c in cardsInfo)
                 {
                     infoString += "<article class=\"subnews\"><div class=\"subnews-image\">" +
-                                "<img data-src=\"getImage.ashx?PostID=" + c.Id + "&Size=thumbnail\" alt =\"" + c.HeadLine + "\" style='min-height:300px;'>" +
+                                "<img data-src=\"" +ImageHost+ c.ThumbnailPath + "\" alt =\"" + c.HeadLine + "\" style='min-height:300px;'>" +
                                  "<div class=\"info\"> <p>" + db.Post_Categories.Where(n => n.Id == c.Category).Select(n => n.Name).FirstOrDefault() + "</p>" +
                                     "<p>" + Convert.ToDateTime(c.NewsDate).ToString("dd MMMM yyyy") + "</p></div></div><div class=\"subnews-info\"><h1>" + c.HeadLine + "</h1>" +
                                     "<button class=\"blue-button\" onclick='window.open(\"News.aspx?ID=" + globalMethods.EncodeID(c.Id) + "\")'>Read More</button></div></article>";
@@ -121,7 +123,6 @@ namespace JagratBharat
 
         private void loadImageFromPath(string imagePath)
         {
-
             headImage.Src = imagePath;            
         }
     }
